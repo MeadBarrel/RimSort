@@ -24,9 +24,10 @@ from app.controllers.metadata_db_controller import AuxMetadataController
 from app.controllers.settings_controller import SettingsController
 from app.models.image_label import ImageLabel
 from app.models.metadata.metadata_db import AuxMetadataEntry
+from app.sort.mod_sorting import uuid_to_folder_size
 from app.utils.app_info import AppInfo
 from app.utils.custom_list_widget_item import CustomListWidgetItem
-from app.utils.generic import platform_specific_open
+from app.utils.generic import format_file_size, platform_specific_open, scanpath
 from app.utils.metadata import MetadataManager
 from app.views.description_widget import DescriptionWidget
 from app.views.dialogue import show_dialogue_input
@@ -256,7 +257,7 @@ class ModInfo:
         )
         self.notes = QTextEdit()  # TODO: Custom QTextEdit to allow markdown and clickable hyperlinks? Also make collapsible?
         self.notes.setObjectName("userModNotes")
-        self.notes.setPlaceholderText("Put your personal mod notes here!")
+        self.notes.setPlaceholderText(self.tr("Put your personal mod notes here!"))
         self.notes.textChanged.connect(self.update_user_mod_notes)
         self.notes.setVisible(False)  # Only shows when a mod is selected
         # Add widgets to child layouts
@@ -494,9 +495,8 @@ class ModInfo:
         mod_data = self.current_mod_item.data(Qt.ItemDataRole.UserRole)
         mod_data["user_notes"] = new_notes
         # Update Aux DB
-        instance_path = Path(self.settings_controller.settings.current_instance_path)
         aux_metadata_controller = AuxMetadataController.get_or_create_cached_instance(
-            instance_path / "aux_metadata.db"
+            self.settings_controller.settings.aux_db_path
         )
         uuid = mod_data["uuid"]
         if not uuid:
@@ -633,7 +633,7 @@ class ModInfo:
 
             # Set folder size
             try:
-                if self.settings_controller.settings.enable_advanced_filtering:
+                if self.settings_controller.settings.inactive_mods_sorting:
                     size_bytes = uuid_to_folder_size(uuid)
                     self.mod_info_folder_size_value.setText(
                         format_file_size(size_bytes)
@@ -659,7 +659,7 @@ class ModInfo:
             # Set filesystem modification time
             mod_path = mod_info.get("path")
             if (
-                self.settings_controller.settings.enable_advanced_filtering
+                self.settings_controller.settings.inactive_mods_sorting
                 and mod_path
                 and os.path.exists(mod_path)
             ):
@@ -776,7 +776,7 @@ class ModInfo:
                 if os.path.exists(about_folder_target_path):
                     # Look for a case-insensitive About folder
                     invalid_folder_path_found = True
-                    for temp_file in os.scandir(workshop_folder_path):
+                    for temp_file in scanpath(workshop_folder_path):
                         if (
                             temp_file.name.lower() == about_folder_name.lower()
                             and temp_file.is_dir()
@@ -787,7 +787,7 @@ class ModInfo:
                     # Look for a case-insensitive "Preview.png" file
                     invalid_file_path_found = True
                     preview_file_name = "Preview.png"
-                    for temp_file in os.scandir(
+                    for temp_file in scanpath(
                         str((Path(workshop_folder_path) / about_folder_name))
                     ):
                         if (

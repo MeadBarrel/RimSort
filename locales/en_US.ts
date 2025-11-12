@@ -191,6 +191,66 @@
     </message>
 </context>
 <context>
+    <name>DuplicateModsPanel</name>
+    <message>
+        <source>Mod Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Author</source>
+        <translation type="unfinished">Author</translation>
+    </message>
+    <message>
+        <source>Package ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PublishedFileId</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Source</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mod Downloaded</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Workshop Page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RimSort - Duplicate Mods Found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Duplicate mods detected!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>
+The following table displays duplicate mods grouped by package ID. Select which versions to keep and choose an action.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete Selected Duplicates...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open Workshop Page</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FatalErrorDialog</name>
     <message>
         <source>Show Details</source>
@@ -576,18 +636,6 @@ Would you like to configure them now?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Duplicate mod(s) found</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Duplicate mods(s) found for package ID(s) in your ModsConfig.xml (active mods list)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The following list of mods were set active in your ModsConfig.xml and duplicate instances were found of these mods in your mod data sources. The vanilla game will use the first &apos;local mod&apos; of a particular package ID that is found - so RimSort will also adhere to this logic.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Could not find data for some mods!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -595,55 +643,6 @@ Would you like to configure them now?</source>
         <source>The following list of mods were set active in your mods list but no data could be found for these mods in local/workshop mod paths. 
 
 Are your game configuration paths correct?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Update skipped</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You are running from Python interpreter.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Skipping update check...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Unable to retrieve latest release information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>RimSort update found</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You are running RimSort {current_version}
-Do you want to update now?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Unable to complete update</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Update downloaded</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Do you want to proceed with the update?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Failed to download update</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Failed to download latest RimSort release!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Please check your internet connection and try again, You can also check &apos;https://github.com/RimSort/RimSort/releases&apos; directly.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -708,6 +707,30 @@ Do you want to update now?</source>
     </message>
     <message>
         <source>Click &quot;Show Details&quot; to see the full report!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Report too long</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Even the first mod exceeds the 200,000 character limit.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot upload this report to Rentry.co.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The mod list report exceeds 200,000 characters.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rentry.co may reject uploads that are too long. Would you like to truncate the report to the first {max_mods} mods or cancel the upload?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Truncate to the first {max_mods} mods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1109,34 +1132,6 @@ The resultant database, C, is saved to a user-specified path. You will be prompt
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>An update to RimSort has been released: {latest_tag_name}</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Failed to find valid RimSort release for {system_info}</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Unable to retrieve release information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Failed to connect to GitHub API: {error}</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloading RimSort {tag_name} release...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Failed to launch update</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Could not start the update process.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Unsaved Changes</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1162,6 +1157,42 @@ The resultant database, C, is saved to a user-specified path. You will be prompt
     </message>
     <message>
         <source>Uploaded {path.name} to https://0x0.st/</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset SteamCMD ACF data file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to reset SteamCMD ACF data file?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This file is created and used by steamcmd to track mod informaton, This action cannot be undone.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Successfully deleted SteamCMD ACF data file: {steamcmd_appworkshop_acf_path}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ACF data file will be recreated when you download mods using steamcmd next time.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SteamCMD ACF data file does not exist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ACf file does not exist. It will be created when you download mods using steamcmd.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to open file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to open the file with default text editor. It may not exist.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1876,10 +1907,6 @@ How would you like to proceed?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>An error occurred while restoring instance [{instance_controller.instance.name}].</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>The instance folder was not found after extracting the archive. Perhaps the archive is corrupt or the instance name is invalid.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1971,6 +1998,14 @@ How would you like to proceed?</source>
         <source>ACF Log Reader</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Player Log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>An error occurred while restoring instance [{name}].</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MenuBar</name>
@@ -2008,10 +2043,6 @@ How would you like to proceed?</source>
     </message>
     <message>
         <source>To Rentry.co…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Upload Log</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2164,6 +2195,10 @@ How would you like to proceed?</source>
     </message>
     <message>
         <source>RimSort GitHub…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset Mod Colors</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2347,15 +2382,7 @@ Please select your preferred mod variant in the table below. You can also open e
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Successfully deleted {count} selected mods.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>An OS error occurred while deleting the mod.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>{error_msg} occurred at {filename} with error code {error_code}.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2363,15 +2390,7 @@ Please select your preferred mod variant in the table below. You can also open e
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Please select at least one mod to delete.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Confirm Complete Deletion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You have selected {count} mod(s) for complete deletion.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2390,10 +2409,6 @@ Do you want to proceed?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>You have selected {count} mod(s) for DDS texture deletion.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>
 This operation will only delete optimized textures (.dds files) from the selected mods.
 
@@ -2402,10 +2417,6 @@ Do you want to proceed?</source>
     </message>
     <message>
         <source>Confirm Selective Deletion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You have selected {count} mod(s) for selective deletion.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2418,10 +2429,6 @@ Do you want to proceed?</source>
     </message>
     <message>
         <source>An error occurred while trying to {action} from Steam Workshop mods.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Please select at least one mod to delete and {action}.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2442,24 +2449,6 @@ The process may take a few moments to complete.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Confirm Deletion and {action}</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You have selected {count} mod(s) for deletion.
-{steam_count} of these are Steam Workshop mods that will also be {action}.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>
-This operation will:
-• Delete the selected mod directories from your filesystem
-• {action} Steam Workshop mods from your Steam account
-
-Do you want to proceed?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>unsubscribe</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2473,6 +2462,52 @@ Do you want to proceed?</source>
     </message>
     <message>
         <source>resubscribed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Successfully deleted {result.success_count} selected mods.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deletion Incomplete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to delete {result.failed_count} mod(s). Check logs for details.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>{e.strerror or &apos;Unknown error&apos;} occurred at {e.filename or mod_path} with error code {error_code}.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You have selected {selected_count} mod(s) for complete deletion.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You have selected {selected_count} mod(s) for DDS texture deletion.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You have selected {selected_count} mod(s) for selective deletion.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Confirm Deletion and {action_capitalized}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You have selected {selected_count} mod(s) for deletion.
+{steam_count} of these are Steam Workshop mods that will also be {action_past}.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>
+This operation will:
+• Delete the selected mod directories from your filesystem
+• {action_capitalized} Steam Workshop mods from your Steam account
+
+Do you want to proceed?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2524,6 +2559,10 @@ Do you want to proceed?</source>
     </message>
     <message>
         <source>Workshop Times:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Put your personal mod notes here!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2782,15 +2821,17 @@ An alternative updated mod is recommended:
 {alternative}</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>ModUpdaterPrompt</name>
     <message>
-        <source>Update mods</source>
+        <source>
+Alternative Dependencies:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Update all</source>
+        <source>Open folder in text editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open folder(s) in text editor</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2958,6 +2999,313 @@ An alternative updated mod is recommended:
     </message>
     <message>
         <source>{padding}{count} new</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PlayerLogTab</name>
+    <message>
+        <source>File Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Path:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Size:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modified:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Statistics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total Lines: {total_lines}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Infos: {infos}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Keybinds: {keybinds}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mod Issues: {mod_issues}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Warnings: {warnings}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Errors: {errors}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exceptions: {exceptions}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All Issues: {all_issues}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto Load Game Log on Startup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>If checked, the Game log will be loaded automatically on startup.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable Real-Time Log Monitoring</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable real-time monitoring of Player.log file changes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear Log Display</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Load Game Log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Loads the game&apos;s Player.log file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Load Log from File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open a file dialog to select a log file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Load Log from Link</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Load log content from a URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search and Filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search log entries...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All Entries</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Infos Only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Keybinds Only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mod Issues</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Warnings Only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Errors Only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exceptions Only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All Issues</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filter by mod name...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Highlight Color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pick color for search and navigation highlighting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Previous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Quick Navigation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Scroll to End</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Scroll to the end of the log display</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Path: Loaded from URL: {url}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Path: Loaded from URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Size: {size:,} bytes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modified: N/A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Path: N/A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Size: N/A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Player log file not found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter URL:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Log loaded successfully from URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to load log from URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed due to error: {error}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Path: {path_str}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Size: {size_str}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modified: {modified_str}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Keybind</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mod_issue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exception</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Jump to previous {lower} entry</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Jump to next {lower} entry</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total Lines: 0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Infos: 0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Keybinds: 0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mod Issues: 0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Warnings: 0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Errors: 0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exceptions: 0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All Issues: 0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Controls</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pick Highlight Color</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3241,6 +3589,14 @@ Click &apos;Show Details&apos; to see a list of mods that failed.</source>
         <source>Ok</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>SteamCMD Downloader Login error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SteamCMD reported a login error. Please ensure you are connected to internet and steamcmd is not blocked by your firewall.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SearchWorker</name>
@@ -3261,6 +3617,22 @@ Click &apos;Show Details&apos; to see a list of mods that failed.</source>
     </message>
     <message>
         <source>Are you sure you want to reset all settings to their default values?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Invalid Game Location</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The selected game folder does not contain a valid RimWorld executable. Please select a valid game location.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Invalid Config Folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The selected config folder does not contain ModsConfig.xml. Please select a valid config folder.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3347,6 +3719,34 @@ Click &apos;Show Details&apos; to see a list of mods that failed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Backup Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Automatically backup saves on first daily launch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>If enabled, RimSort will automatically backup saves on the first daily launch.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Number of backups to keep:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The number of backups to keep. Set to -1 to keep all backups, 0 to delete all.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Number of saves to compress:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The number of recent saves to include in the backup. Set to -1 to compress all saves, 0 to compress none.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>None</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3395,10 +3795,6 @@ Click &apos;Show Details&apos; to see a list of mods that failed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Sort mods</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alphabetically</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3415,11 +3811,50 @@ Click &apos;Show Details&apos; to see a list of mods that failed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Sort Dependencies</source>
+        <source>Prompt user to download dependencies when click in Sort</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Prompt user to download dependencies when click in Sort</source>
+        <source>When enabled, *ByVersion tags take precedence over the base tags, 
+If a matching version tag exists but is empty, the base tag is ignored. 
+e.g.(modDependenciesByVersion, loadAfterByVersion, loadBeforeByVersion, incompatibleWithByVersion, descriptionsByVersion)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mod list options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Notifies to download mods that may be missing in the active modlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Notifies and displays the mods that have the same packageid</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add icons and filtering options for easy mods identification and grouping</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hides invalid mods, not recommended to enable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Inactive Mods Sorting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable inactive mods sorting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Additional options like name, author, folder size, modified date will be available in the mods panel for sorting inactive mods 
+Disabling this can improve performance by avoiding heavy calculations.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save inactive mods sort state</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3811,6 +4246,85 @@ Improves performance by ~50%.</source>
         <source>Compare mod lists with the recent save file</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Clear also moves DLC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom todds command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>If -p as in path is not specified, path from current active or all mods selection will be used.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>eg: {todds_example}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Automatically delete .dds files if no corresponding .png file exists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This will delete .dds files that are not paired with a .png file,
+
+This checks may take few seconds depending on the number of .dds files present.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Prefer versioned About.xml tags over base tags</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>External Tools</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Text Editor command location</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Additional Arguments (Opening Folders)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Additional Arguments (Opening Single File)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sorting Method</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dependencies Handling Behavior</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use alternativePackageIds as satisfying dependencies</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>If enabled, an alternativePackageIds entry in About.xml can satisfy a mod&apos;s dependency when the main dependency is missing. 
+E.g., &apos;oels.vehiclemapframework&apos;, alternatives: &apos;oels.vehiclemapframework.dev&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>XML Parsing Behavior</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create backup before RimSort update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recommended to keep this enabled as it creates a backup before updating RimSort, This helps prevent any unwanted changes or data getting deleted.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Maximum number of backups to keep:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsFailureDialog</name>
@@ -4007,6 +4521,15 @@ New symlink:
     </message>
     <message>
         <source>Failed to apply theme: {selected_theme_name},Resetting to default theme: {self.default_theme}</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ToddsInterface</name>
+    <message>
+        <source>ERROR: todds was not found. If you are running from source, please ensure you have followed the correct steps in the {development_guide_url} 
+
+Please reach out to us for support at: {support_url}</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4403,6 +4926,46 @@ Details: {e}</source>
     </message>
 </context>
 <context>
+    <name>UpdateManager</name>
+    <message>
+        <source>RimSort update found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>An update to RimSort has been released: {latest_tag_name}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You are running RimSort {current_version}
+Do you want to update now?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloading RimSort {tag_name} release...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Extracting update files...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Preparing update installer...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update downloaded</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do you want to proceed with the update?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Creating backup...</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>UseThisInsteadPanel</name>
     <message>
         <source>RimSort - Replacements found for Workshop mods</source>
@@ -4410,39 +4973,6 @@ Details: {e}</source>
     </message>
     <message>
         <source>There are replacements available for Workshop mods!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>
-The following table displays Workshop mods with suggested replacements according to the &quot;Use This Instead&quot; database</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Original Mod Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Original Author</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Original Workshop Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Replacement Mod Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Replacement Author</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Replacement Workshop Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Download with SteamCMD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4454,23 +4984,83 @@ The following table displays Workshop mods with suggested replacements according
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Unsubscribe outdated</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Unsubscribe all outdated</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Refresh Mod List</source>
+        <source>Mod Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Refresh Table</source>
+        <source>Author</source>
+        <translation type="unfinished">Author</translation>
+    </message>
+    <message>
+        <source>Package ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PublishedFileId</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Supported Versions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Source</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mod Downloaded</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Workshop Page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The following table displays Workshop mods with suggested replacements according to the &quot;Use This Instead&quot; database, grouped by replacement mod.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select all Originals</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select all Replacements</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SteamCMD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download selected with SteamCMD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download all replacements with SteamCMD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Subscribe selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unsubscribe selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unsubscribe all originals</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4486,19 +5076,63 @@ The following table displays Workshop mods with suggested replacements according
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Successfully subscribed to replacement mods</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Successfully unsubscribed to original mods</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Subscribe replacements</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Subscribe all replacements</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Successfully {action}d {count} mods</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open Workshop Page</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>WorkshopModUpdaterPanel</name>
+    <message>
+        <source>RimSort - Updates found for Workshop mods</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>There updates available for Workshop mods!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>
+The following table displays Workshop mods available for update from Steam.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PublishedFileID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mod Source</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mod Downloaded</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Updated on Workshop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Workshop Page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update Selected Mods</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update All Mods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4584,18 +5218,6 @@ The following table displays Workshop mods with suggested replacements according
 <context>
     <name>launch_game_process</name>
     <message>
-        <source>File not found</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Unable to launch game process</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>RimSort could not start RimWorld as the game executable does not exist at the specified path: {executable_path}. Please check that this directory is correct and the RimWorld game executable exists in it.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Game launch failed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4605,6 +5227,14 @@ The following table displays Workshop mods with suggested replacements according
     </message>
     <message>
         <source>RimSort could not start RimWorld as the game folder is empty or invalid: [{game_install_path}] Please check that the game folder is properly set and that the RimWorld executable exists in it.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Invalid game folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RimSort could not validate the RimWorld executable in the specified folder: {game_install_path}. Please check that this directory is correct and contains a valid RimWorld game executable.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

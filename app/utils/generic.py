@@ -6,22 +6,64 @@ import socket
 import subprocess
 import sys
 import webbrowser
+from collections import namedtuple
+from datetime import datetime
 from errno import EACCES
+from io import TextIOWrapper
 from pathlib import Path
 from re import search, sub
 from stat import S_IRWXG, S_IRWXO, S_IRWXU
-from typing import Any, Callable, Generator
+from time import localtime, strftime
+from typing import TYPE_CHECKING, Any, Callable, Generator, Tuple
 
 import requests
+import vdf  # type: ignore
 from loguru import logger
-from pyperclip import (  # type: ignore # Stubs don't exist for pyperclip
-    copy as copy_to_clipboard,
-)
 from PySide6.QtCore import QCoreApplication
 from PySide6.QtWidgets import QApplication
 
 import app.views.dialogue as dialogue
 from app.utils.app_info import AppInfo
+
+if TYPE_CHECKING or sys.platform == "win32":
+    import ctypes
+    from ctypes import wintypes
+
+    class WIN32_FIND_DATAW(ctypes.Structure):
+        _fields_ = [
+            ("dwFileAttributes", wintypes.DWORD),
+            ("ftCreationTime", wintypes.FILETIME),
+            ("ftLastAccessTime", wintypes.FILETIME),
+            ("ftLastWriteTime", wintypes.FILETIME),
+            ("nFileSizeHigh", wintypes.DWORD),
+            ("nFileSizeLow", wintypes.DWORD),
+            ("dwReserved0", wintypes.DWORD),
+            ("dwReserved1", wintypes.DWORD),
+            ("cFileName", wintypes.WCHAR * 260),
+            ("cAlternateFileName", wintypes.WCHAR * 14),
+        ]
+
+
+_Win32StatResult = namedtuple("_Win32StatResult", ["st_size"])
+
+
+class Win32DirEntry:
+    def __init__(self, path: Path, find_data: Any):
+        self.name = find_data.cFileName
+        self.path = str(path / self.name)
+        self.size = (find_data.nFileSizeHigh << 32) + find_data.nFileSizeLow
+        self._dwFileAttributes = find_data.dwFileAttributes
+        self.FILE_ATTRIBUTE_DIRECTORY = 0x10
+
+    def is_dir(self) -> bool:
+        return bool(self._dwFileAttributes & self.FILE_ATTRIBUTE_DIRECTORY)
+
+    def is_file(self) -> bool:
+        return not self.is_dir()
+
+    def stat(self) -> _Win32StatResult:
+        return _Win32StatResult(self.size)
+
 
 translate = QCoreApplication.translate
 
@@ -44,7 +86,8 @@ def copy_to_clipboard_safely(text: str) -> None:
     :param text: text to copy to clipboard
     """
     try:
-        copy_to_clipboard(text)
+        clipboard = QApplication.clipboard()
+        clipboard.setText(text)
     except Exception as e:
         logger.error(f"Failed to copy to clipboard: {e}")
         dialogue.show_fatal_error(
@@ -169,10 +212,65 @@ def delete_files_only_extension(directory: Path | str, extension: str) -> bool:
     return delete_files_with_condition(directory, lambda file: file.endswith(extension))
 
 
+def scanpath(
+    path: Path | str,
+) -> Generator[os.DirEntry[str] | Win32DirEntry, None, None]:
+    if sys.platform == "win32" and "ctypes" in globals():
+        try:
+            INVALID_HANDLE_VALUE = -1
+
+            find_data = WIN32_FIND_DATAW()
+            kernel32 = ctypes.windll.kernel32
+
+            # Define function prototypes
+            kernel32.FindFirstFileW.argtypes = [
+                wintypes.LPCWSTR,
+                ctypes.POINTER(WIN32_FIND_DATAW),
+            ]
+            kernel32.FindFirstFileW.restype = wintypes.HANDLE
+            kernel32.FindNextFileW.argtypes = [
+                wintypes.HANDLE,
+                ctypes.POINTER(WIN32_FIND_DATAW),
+            ]
+            kernel32.FindNextFileW.restype = wintypes.BOOL
+            kernel32.FindClose.argtypes = [wintypes.HANDLE]
+            kernel32.FindClose.restype = wintypes.BOOL
+
+            p = Path(path)
+
+            handle = kernel32.FindFirstFileW(str(p / "*"), ctypes.byref(find_data))
+
+            if handle == INVALID_HANDLE_VALUE:
+                last_error = ctypes.get_last_error()
+                if last_error != 2:  # File not found
+                    raise ctypes.WinError(last_error)
+                return
+
+            try:
+                while True:
+                    if find_data.cFileName not in (".", ".."):
+                        yield Win32DirEntry(p, find_data)
+                    if not kernel32.FindNextFileW(handle, ctypes.byref(find_data)):
+                        last_error = ctypes.get_last_error()
+                        if last_error in (0, 18):  # No more files
+                            return
+                        else:
+                            raise ctypes.WinError(last_error)
+            finally:
+                kernel32.FindClose(handle)
+        except OSError as e:
+            logger.error(f"An unexpected Win32 API error for scanpath occurred: {e}")
+    else:
+        try:
+            with os.scandir(path) as it:
+                yield from it
+        except OSError as e:
+            logger.error(f"os.scandir failed for directory {path}: {e}")
+
+
 def directories(mods_path: Path | str) -> list[str]:
     try:
-        with os.scandir(mods_path) as directories:
-            return [directory.path for directory in directories if directory.is_dir()]
+        return [entry.path for entry in scanpath(mods_path) if entry.is_dir()]
     except OSError as e:
         logger.error(f"Error reading directory {mods_path}: {e}")
         return []
@@ -215,6 +313,49 @@ def handle_remove_read_only(
             raise
 
 
+def get_executable_path(game_install_path: Path) -> str | None:
+    """
+    Determine the executable path for RimWorld based on the platform.
+
+    :param game_install_path: Path to the game folder.
+    :return: Executable path as string or None if not found.
+    """
+    system_name = platform.system()
+
+    # Define platform-specific executable checks
+    platform_checks = {
+        "Darwin": lambda p: str(p) if p.suffix == ".app" and p.is_dir() else None,
+        "Linux": lambda p: next(
+            (
+                str(exe)
+                for exe in [
+                    p / "RimWorldLinux",
+                    p / "RimWorldWin64.exe",
+                    p / "RimWorldWin.exe",
+                ]
+                if exe.exists()
+                and (exe.name != "RimWorldLinux" or os.access(exe, os.X_OK))
+            ),
+            None,
+        ),
+        "Windows": lambda p: next(
+            (
+                str(exe)
+                for exe in [p / "RimWorldWin64.exe", p / "RimWorldWin.exe"]
+                if exe.exists()
+            ),
+            None,
+        ),
+    }
+
+    check_func = platform_checks.get(system_name)
+    if check_func:
+        return check_func(game_install_path)
+    else:
+        logger.error(f"Unsupported platform for game launch: {system_name}")
+        return None
+
+
 def launch_game_process(game_install_path: Path, args: list[str]) -> None:
     """
     This function starts the Rimworld game process in it's own Process,
@@ -227,80 +368,7 @@ def launch_game_process(game_install_path: Path, args: list[str]) -> None:
     :param game_install_path: is a path to the game folder
     :param args: is a list of strings representing the args to pass to the generated executable path
     """
-    logger.info(f"Attempting to find the game in the game folder {game_install_path}")
-    if game_install_path:
-        system_name = platform.system()
-        if system_name == "Darwin":
-            # MacOS
-            executable_path = str(game_install_path)
-        elif system_name == "Linux":
-            # Linux
-            executable_path = str((game_install_path / "RimWorldLinux"))
-        elif system_name == "Windows":
-            # Windows
-            path64 = game_install_path / "RimWorldWin64.exe"
-            path32 = game_install_path / "RimWorldWin.exe"
-
-            executable_path = str(path64)  # default to 64-bit executable
-            if (
-                not path64.exists() and path32.exists()
-            ):  # look for and set path to 86x executable only if default doesn't exist
-                executable_path = str(path32)
-
-        else:
-            logger.error("Unable to launch the game on an unknown system")
-            return
-
-        logger.info(f"Path to game executable generated: {executable_path}")
-        if os.path.exists(executable_path):
-            logger.info(
-                "Launching the game with subprocess.Popen(): `"
-                + executable_path
-                + "` with args: `"
-                + str(args)
-                + "`"
-            )
-            # https://stackoverflow.com/a/21805723
-            if system_name == "Darwin":  # MacOS
-                popen_args = ["open", executable_path, "--args"]
-                popen_args.extend(args)
-                p = subprocess.Popen(popen_args)
-            else:
-                popen_args = [executable_path]
-                popen_args.extend(args)
-
-                if sys.platform == "win32":
-                    p = subprocess.Popen(
-                        popen_args,
-                        creationflags=subprocess.CREATE_NEW_PROCESS_GROUP,
-                        shell=True,
-                        cwd=game_install_path,
-                    )
-                else:
-                    # not Windows, so assume POSIX; if not, we'll get a usable exception
-                    p = subprocess.Popen(
-                        popen_args, start_new_session=True, cwd=game_install_path
-                    )
-
-            logger.info(
-                f"Launched independent RimWorld game process with PID {p.pid} using args {popen_args}"
-            )
-        else:
-            logger.debug("The game executable path does not exist")
-            dialogue.show_warning(
-                title=translate("launch_game_process", "File not found"),
-                text=translate("launch_game_process", "Unable to launch game process"),
-                information=(
-                    translate(
-                        "launch_game_process",
-                        "RimSort could not start RimWorld as the game executable does "
-                        "not exist at the specified path: {executable_path}. Please check "
-                        "that this directory is correct and the RimWorld game executable "
-                        "exists in it.",
-                    ).format(executable_path=executable_path)
-                ),
-            )
-    else:
+    if not game_install_path:
         logger.error("The path to the game folder is empty")
         dialogue.show_warning(
             title=translate("launch_game_process", "Game launch failed"),
@@ -313,6 +381,93 @@ def launch_game_process(game_install_path: Path, args: list[str]) -> None:
                 ).format(game_install_path=game_install_path)
             ),
         )
+        return
+
+    logger.info(f"Attempting to launch the game from folder {game_install_path}")
+
+    # Get the executable path
+    executable_path = get_executable_path(game_install_path)
+    if not executable_path:
+        logger.error("Game executable validation failed - no valid executable found")
+        dialogue.show_warning(
+            title=translate("launch_game_process", "Invalid game folder"),
+            text=translate("launch_game_process", "Unable to launch RimWorld"),
+            information=(
+                translate(
+                    "launch_game_process",
+                    "RimSort could not validate the RimWorld executable in the specified folder: {game_install_path}. Please check that this directory is correct and contains a valid RimWorld game executable.",
+                ).format(game_install_path=game_install_path)
+            ),
+        )
+        return
+
+    logger.info(
+        f"Launching the game with subprocess.Popen(): `{executable_path}` with args: {args}"
+    )
+    pid, popen_args = launch_process(executable_path, args, str(game_install_path))
+    logger.info(
+        f"Launched independent RimWorld game process with PID {pid} using args {popen_args}"
+    )
+
+
+def validate_game_executable(game_folder: str) -> bool:
+    """
+    Validate if the provided game folder contains a valid RimWorld executable.
+
+    :param game_folder: Path to the game folder as a string.
+    :return: True if a valid executable is found, False otherwise.
+    """
+    if not game_folder or not game_folder.strip():
+        logger.info("Game folder path is empty or None")
+        return False
+
+    game_install_path = Path(game_folder)
+    if not game_install_path.exists() or not game_install_path.is_dir():
+        logger.info(
+            f"Game folder does not exist or is not a directory: {game_install_path}"
+        )
+        return False
+
+    # Use the new get_executable_path function for validation
+    executable_path = get_executable_path(game_install_path)
+    if executable_path:
+        logger.debug(f"Valid RimWorld executable found: {executable_path}")
+        return True
+
+    system_name = platform.system()
+    logger.info(
+        f"No valid RimWorld executable found for {system_name} in: {game_install_path}"
+    )
+    return False
+
+
+def launch_process(
+    executable_path: str, args: list[str], cwd: str
+) -> Tuple[int, list[str]]:
+    pid = -1
+    # https://stackoverflow.com/a/21805723
+    if platform.system() == "Darwin":  # MacOS
+        popen_args = ["open", executable_path, "--args"]
+        popen_args.extend(args)
+        p = subprocess.Popen(popen_args)
+        pid = p.pid
+    else:
+        popen_args = [executable_path]
+        popen_args.extend(args)
+
+        if sys.platform == "win32":
+            p = subprocess.Popen(
+                popen_args,
+                creationflags=subprocess.CREATE_NEW_PROCESS_GROUP,
+                shell=True,
+                cwd=cwd,
+            )
+            pid = p.pid
+        else:
+            # not Windows, so assume POSIX; if not, we'll get a usable exception
+            p = subprocess.Popen(popen_args, start_new_session=True, cwd=cwd)
+            pid = p.pid
+    return pid, popen_args
 
 
 def open_url_browser(url: str) -> None:
@@ -409,6 +564,18 @@ def flatten_to_list(obj: Any) -> list[Any] | dict[Any, Any] | Any:
         return obj
 
 
+def format_file_size(size_in_bytes: int) -> str:
+    """Format bytes to a human-readable string."""
+    if size_in_bytes < 1024:
+        return f"{size_in_bytes} B"
+    elif size_in_bytes < 1024 * 1024:
+        return f"{size_in_bytes / 1024:.1f} KB"
+    elif size_in_bytes < 1024 * 1024 * 1024:
+        return f"{size_in_bytes / (1024 * 1024):.1f} MB"
+    else:
+        return f"{size_in_bytes / (1024 * 1024 * 1024):.2f} GB"
+
+
 def upload_data_to_0x0_st(path: str) -> tuple[bool, str]:
     """
     Function to upload data to https://0x0.st/
@@ -485,6 +652,81 @@ def check_valid_http_git_url(url: str) -> bool:
     :return: a boolean indicating whether the url is a valid git url
     """
     return url and url != "" and url.startswith("http://") or url.startswith("https://")
+
+
+def get_path_up_to_string(
+    path: Path, stop_string: str, exclude: bool = False
+) -> Path | str:
+    """
+    Returns a Path up to the stop_string.
+
+    :param path: Path to search
+    :param stop_string: str that path is returned up to.
+    :param exclude: bool, decides if stop_string is excluded from returned path
+    :return: Path up to stop_string or empty str if stop_string is not present
+    """
+    parts = path.parts
+
+    try:
+        stop_idx = parts.index(stop_string)
+        if exclude:
+            return Path(*parts[:stop_idx])
+        else:
+            return Path(*parts[: stop_idx + 1])
+    except ValueError:
+        # Stop string is not present
+        return ""
+
+
+def find_steam_rimworld(steam_folder: Path | str) -> str:
+    """
+    This should be compatible cross-platform.
+
+    Given a steam installation path, find and read the libraryfolders.vdf
+    and from this file retrieve the RimWorld steam isntallation path.
+
+    :param steam_folder: Path to steam installation
+    :return: Rimworld Path if found, blank str otherwise
+    """
+
+    def __load_data(f: TextIOWrapper) -> str:
+        """
+        Helper function that returns RimWorld path from libraryfolders.vdf
+        if found inside, empty string otherwise.
+        """
+        rimworld_path = ""
+        data = vdf.load(f)
+        library_folders = data.get("libraryfolders", None)
+        if not library_folders:
+            return ""
+        # Find 294100 (RimWorld)
+        for _, folder in library_folders.items():
+            if "294100" in folder.get("apps", {}):
+                rimworld_path = folder.get("path", "")
+                break
+        return rimworld_path
+
+    rimworld_path = ""
+    steam_folder = Path(steam_folder)
+
+    primary_library = "config/libraryfolders.vdf"
+    backup_library = "steamapps/libraryfolders.vdf"
+
+    if os.path.exists(steam_folder / primary_library):
+        logger.debug(f"Attempting to get RimWorld path from {primary_library}")
+        with open(steam_folder / primary_library, "r") as f:
+            rimworld_path = __load_data(f)
+    elif os.path.exists(steam_folder / backup_library):
+        logger.debug(f"Attempting to get RimWorld path from {backup_library}")
+        with open(steam_folder / backup_library, "r") as f:
+            rimworld_path = __load_data(f)
+    else:
+        logger.warning("Failed retrieving RimWorld path from libraryfolders.vdf")
+        return rimworld_path
+
+    full_rimworld_path = Path(rimworld_path) / "steamapps/common/RimWorld"
+
+    return str(full_rimworld_path) if rimworld_path else rimworld_path
 
 
 def check_internet_connection(
@@ -600,3 +842,56 @@ def restart_application() -> None:
         instance.quit()
     else:
         logger.warning("No QApplication instance found, cannot restart the application")
+
+
+def get_relative_time(timestamp: int) -> str:
+    """
+    Convert a timestamp to a relative time string (e.g. "2 days ago").
+
+    Args:
+        timestamp (int): Unix timestamp to convert.
+
+    Returns:
+        str: Human-readable relative time string, or "Invalid timestamp" if conversion fails.
+    """
+    try:
+        dt = datetime.fromtimestamp(timestamp)
+        now = datetime.now()
+        delta = now - dt
+
+        if delta.days > 365:
+            return f"{delta.days // 365} years ago"
+        elif delta.days > 30:
+            return f"{delta.days // 30} months ago"
+        elif delta.days > 0:
+            return f"{delta.days} days ago"
+        elif delta.seconds > 3600:
+            return f"{delta.seconds // 3600} hours ago"
+        elif delta.seconds > 60:
+            return f"{delta.seconds // 60} minutes ago"
+        else:
+            return "Just now"
+    except (ValueError, TypeError):
+        return "Invalid timestamp"
+
+
+def format_time_display(timestamp: int | None) -> tuple[str, int | None]:
+    """
+    Format a timestamp into absolute and relative time strings for display.
+
+    Args:
+        timestamp (int | None): Unix timestamp to format, or None if unknown.
+
+    Returns:
+        tuple[str, int | None]: A tuple of (formatted_time_string, timestamp).
+                                 If timestamp is None, returns ("Unknown", None).
+    """
+    if timestamp is None:
+        return "Unknown", None
+
+    try:
+        abs_time = strftime("%Y-%m-%d %H:%M:%S", localtime(timestamp))
+        rel_time = get_relative_time(timestamp)
+        return f"{abs_time} | {rel_time}", timestamp
+    except (ValueError, TypeError, OSError):
+        return "Invalid timestamp", None

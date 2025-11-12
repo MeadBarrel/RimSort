@@ -93,7 +93,7 @@ class MainWindow(QMainWindow):
         app_layout.addWidget(self.tab_widget)
 
         # Create various panels on the application GUI
-        self.main_content_panel = MainContent(
+        self.main_content_panel: MainContent = MainContent(
             settings_controller=self.settings_controller
         )
         self.main_content_panel.disable_enable_widgets_signal.connect(
@@ -210,7 +210,9 @@ class MainWindow(QMainWindow):
             settings_controller=self.settings_controller,
         )
 
-        self.menu_bar = MenuBar(menu_bar=self.menuBar())
+        self.menu_bar = MenuBar(
+            menu_bar=self.menuBar(), settings_controller=self.settings_controller
+        )
         self.menu_bar_controller = MenuBarController(
             view=self.menu_bar,
             settings_controller=self.settings_controller,
@@ -307,7 +309,7 @@ class MainWindow(QMainWindow):
             self.settings_controller.settings.save()
         # IF CHECK FOR UPDATE ON STARTUP...
         if self.settings_controller.settings.check_for_update_startup:
-            self.main_content_panel.actions_slot("check_for_update")
+            EventBus().do_check_for_application_update.emit()
         # Delete outdated entries in aux DB
         EventBus().do_delete_outdated_entries_in_aux_db.emit()
 
@@ -414,15 +416,13 @@ class MainWindow(QMainWindow):
         logger.info(f"Selected path: {output_path}")
         if output_path:
             try:
-                self.main_content_panel.do_threaded_loading_animation(
-                    gif_path=str(
-                        AppInfo().theme_data_folder / "default-icons" / "rimsort.gif"
-                    ),
-                    target=partial(
+                EventBus().do_threaded_loading_animation.emit(
+                    str(AppInfo().theme_data_folder / "default-icons" / "rimsort.gif"),
+                    partial(
                         instance_controller.compress_to_archive,
                         output_path,
                     ),
-                    text=self.tr(
+                    self.tr(
                         "Compressing [{instance_name}] instance folder to archive..."
                     ).format(instance_name=instance_name),
                 )
@@ -496,13 +496,13 @@ class MainWindow(QMainWindow):
                 logger.info("User cancelled instance extraction.")
                 return
 
-        self.main_content_panel.do_threaded_loading_animation(
-            target=partial(
+        EventBus().do_threaded_loading_animation.emit(
+            str(AppInfo().theme_data_folder / "default-icons" / "rimsort.gif"),
+            partial(
                 instance_controller.extract_from_archive,
                 input_path,
             ),
-            gif_path=str(AppInfo().theme_data_folder / "default-icons" / "rimsort.gif"),
-            text=self.tr("Restoring instance [{name}] from archive...").format(
+            self.tr("Restoring instance [{name}] from archive...").format(
                 name=instance_controller.instance.name
             ),
         )
@@ -565,8 +565,8 @@ class MainWindow(QMainWindow):
             show_warning(
                 title=self.tr("Error restoring instance"),
                 text=self.tr(
-                    "An error occurred while restoring instance [{instance_controller.instance.name}]."
-                ),
+                    "An error occurred while restoring instance [{name}]."
+                ).format(name=instance_controller.instance.name),
                 information=self.tr(
                     "The instance folder was not found after extracting the archive. Perhaps the archive is corrupt or the instance name is invalid."
                 ),
@@ -761,36 +761,34 @@ class MainWindow(QMainWindow):
                 target_config_folder = str(
                     Path(new_instance_path) / "InstanceData" / "Config"
                 )
-                self.main_content_panel.do_threaded_loading_animation(
-                    gif_path=str(
-                        AppInfo().theme_data_folder / "default-icons" / "rimworld.gif"
-                    ),
-                    target=partial(
+                EventBus().do_threaded_loading_animation.emit(
+                    str(AppInfo().theme_data_folder / "default-icons" / "rimworld.gif"),
+                    partial(
                         clone_essential_paths,
                         existing_instance_game_folder,
                         target_game_folder,
                         existing_instance_config_folder,
                         target_config_folder,
                     ),
-                    text=f"Cloning RimWorld game / config folders from [{existing_instance_name}] to [{new_instance_name}] instance...",
+                    f"Cloning RimWorld game / config folders from [{existing_instance_name}] to [{new_instance_name}] instance...",
                 )
                 # Clone the existing local_folder to the new instance
                 if existing_instance_local_folder:
                     if os.path.exists(existing_instance_local_folder) and os.path.isdir(
                         existing_instance_local_folder
                     ):
-                        self.main_content_panel.do_threaded_loading_animation(
-                            gif_path=str(
+                        EventBus().do_threaded_loading_animation.emit(
+                            str(
                                 AppInfo().theme_data_folder
                                 / "default-icons"
                                 / "rimworld.gif"
                             ),
-                            target=partial(
+                            partial(
                                 copy_local_folder,
                                 existing_instance_local_folder,
                                 target_local_folder,
                             ),
-                            text=f"Cloning local mods folder from [{existing_instance_name}] instance to [{new_instance_name}] instance...",
+                            f"Cloning local mods folder from [{existing_instance_name}] instance to [{new_instance_name}] instance...",
                         )
                 # Clone the existing workshop_folder to the new instance's local mods folder
                 if existing_instance_workshop_folder:
@@ -799,22 +797,22 @@ class MainWindow(QMainWindow):
                         existing_instance_name=existing_instance_name,
                         existing_instance_workshop_folder=existing_instance_workshop_folder,
                     )
-                    if answer_workshop_mods == "Convert to SteamCMD":
+                    if answer_workshop_mods == self.tr("Convert to SteamCMD"):
                         if os.path.exists(
                             existing_instance_workshop_folder
                         ) and os.path.isdir(existing_instance_workshop_folder):
-                            self.main_content_panel.do_threaded_loading_animation(
-                                gif_path=str(
+                            EventBus().do_threaded_loading_animation.emit(
+                                str(
                                     AppInfo().theme_data_folder
                                     / "default-icons"
                                     / "steam_api.gif"
                                 ),
-                                target=partial(
+                                partial(
                                     copy_workshop_mods_to_local,
                                     existing_instance_workshop_folder,
                                     target_local_folder,
                                 ),
-                                text=f"Cloning Workshop mods from [{existing_instance_name}] instance to [{new_instance_name}] instance's local mods...",
+                                f"Cloning Workshop mods from [{existing_instance_name}] instance to [{new_instance_name}] instance's local mods...",
                             )
                         else:
                             show_warning(
@@ -825,7 +823,7 @@ class MainWindow(QMainWindow):
                                     existing_instance_workshop_folder=existing_instance_workshop_folder
                                 ),
                             )
-                    elif answer == "Keep Workshop Folder":
+                    elif answer_workshop_mods == self.tr("Keep Workshop Folder"):
                         target_workshop_folder = str(existing_instance_workshop_folder)
                 # If the instance has a 'steamcmd' folder, clone it to the new instance
                 steamcmd_install_path = str(
@@ -945,7 +943,9 @@ class MainWindow(QMainWindow):
             if not instance_data:
                 instance_data = {}
             # Create new instance folder if it does not exist
-            instance_path = self.settings_controller.settings.current_instance_path
+            instance_path = str(
+                Path(AppInfo().app_storage_folder) / "instances" / instance_name
+            )
             if not os.path.exists(instance_path):
                 os.makedirs(instance_path)
             # Get run args from instance data, autogenerate additional config items if desired
@@ -1030,12 +1030,9 @@ class MainWindow(QMainWindow):
                 information=self.tr("This action cannot be undone."),
             )
             if answer.exec_is_positive():
-                instance_path = Path(
-                    self.settings_controller.settings.current_instance_path
-                )
                 aux_metadata_controller = (
                     AuxMetadataController.get_or_create_cached_instance(
-                        instance_path / "aux_metadata.db"
+                        self.settings_controller.settings.aux_db_path
                     )
                 )
                 aux_metadata_controller.engine.dispose()

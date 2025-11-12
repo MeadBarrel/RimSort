@@ -77,6 +77,7 @@ class SettingsDialog(QDialog):
         self._do_db_builder_tab()
         self._do_steamcmd_tab()
         self._do_todds_tab()
+        self._do_external_tools_tab()
         self._do_themes_tab()
         self._do_launch_state_tab()
         self._do_authentication_tab()
@@ -203,6 +204,15 @@ class SettingsDialog(QDialog):
         header_layout = QHBoxLayout()
         group_layout.addLayout(header_layout)
 
+        self.steam_client_integration_checkbox = QCheckBox(
+            self.tr("Enable Steam client integration")
+        )
+        group_layout.addWidget(self.steam_client_integration_checkbox)
+
+        self.steam_client_integration_checkbox.stateChanged.connect(
+            self._on_steam_integration_toggled
+        )
+
         section_label = QLabel(self.tr("Steam mods location"))
         section_label.setFont(GUIInfo().emphasis_font)
         header_layout.addWidget(section_label)
@@ -300,6 +310,58 @@ class SettingsDialog(QDialog):
         self._do_aux_db_performance_group(tab_layout)
         # New section for save-comparison feature
         self._do_recent_save_integration_group(tab_layout)
+        self._do_backup_settings_group(tab_layout)
+
+    def _do_backup_settings_group(self, tab_layout: QBoxLayout) -> None:
+        backup_group_label = QLabel(self.tr("Backup Settings"))
+        backup_group_label.setFont(GUIInfo().emphasis_font)
+        backup_group_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        tab_layout.addWidget(backup_group_label)
+
+        self.backup_saves_on_launch_checkbox = QCheckBox(
+            self.tr("Automatically backup saves on first daily launch")
+        )
+        self.backup_saves_on_launch_checkbox.setToolTip(
+            self.tr(
+                "If enabled, RimSort will automatically backup saves on the first daily launch."
+            )
+        )
+        tab_layout.addWidget(self.backup_saves_on_launch_checkbox)
+
+        # Retention count
+        retention_layout = QHBoxLayout()
+        retention_label = QLabel(self.tr("Number of backups to keep:"))
+        retention_label.setToolTip(
+            self.tr(
+                "The number of backups to keep. Set to -1 to keep all backups, 0 to delete all."
+            )
+        )
+        retention_layout.addWidget(retention_label)
+
+        self.auto_backup_retention_count_spinbox = QSpinBox()
+        self.auto_backup_retention_count_spinbox.setRange(-1, 999)
+        self.auto_backup_retention_count_spinbox.setSizePolicy(
+            QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed
+        )
+        retention_layout.addWidget(self.auto_backup_retention_count_spinbox)
+        tab_layout.addLayout(retention_layout)
+
+        # Compression count
+        compression_layout = QHBoxLayout()
+        compression_label = QLabel(self.tr("Number of saves to compress:"))
+        compression_layout.addWidget(compression_label)
+        compression_label.setToolTip(
+            self.tr(
+                "The number of recent saves to include in the backup. Set to -1 to compress all saves, 0 to compress none."
+            )
+        )
+        self.auto_backup_compression_count_spinbox = QSpinBox()
+        self.auto_backup_compression_count_spinbox.setRange(-1, 999)
+        self.auto_backup_compression_count_spinbox.setSizePolicy(
+            QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed
+        )
+        compression_layout.addWidget(self.auto_backup_compression_count_spinbox)
+        tab_layout.addLayout(compression_layout)
 
     def _do_recent_save_integration_group(self, tab_layout: QBoxLayout) -> None:
         section_label = QLabel(self.tr("Integration with recent save"))
@@ -646,7 +708,7 @@ This basically preserves your mod coloring, user notes etc. for this many second
         sort_group_box_layout = QVBoxLayout()
         sort_group_box.setLayout(sort_group_box_layout)
 
-        sorting_label = QLabel(self.tr("Sort mods"))
+        sorting_label = QLabel(self.tr("Sorting Method"))
         sorting_label.setFont(GUIInfo().emphasis_font)
         sort_group_box_layout.addWidget(sorting_label)
 
@@ -655,6 +717,17 @@ This basically preserves your mod coloring, user notes etc. for this many second
 
         self.sorting_topological_radio = QRadioButton(self.tr("Topologically"))
         sort_group_box_layout.addWidget(self.sorting_topological_radio)
+
+        # Dependencies group
+        deps_group_box = QGroupBox()
+        tab_layout.addWidget(deps_group_box)
+
+        deps_group_box_layout = QVBoxLayout()
+        deps_group_box.setLayout(deps_group_box_layout)
+
+        deps_label = QLabel(self.tr("Dependencies Handling Behavior"))
+        deps_label.setFont(GUIInfo().emphasis_font)
+        deps_group_box_layout.addWidget(deps_label)
 
         # Use dependencies for sorting checkbox
         self.use_moddependencies_as_loadTheseBefore = QCheckBox(
@@ -665,30 +738,141 @@ This basically preserves your mod coloring, user notes etc. for this many second
                 "If enabled, also uses moddependencies as loadTheseBefore, and mods will be sorted such that dependencies are loaded before the dependent mod."
             )
         )
-        sort_group_box_layout.addWidget(self.use_moddependencies_as_loadTheseBefore)
+        deps_group_box_layout.addWidget(self.use_moddependencies_as_loadTheseBefore)
 
-        # Dependencies group
-        deps_group_box = QGroupBox()
-        tab_layout.addWidget(deps_group_box)
-
-        deps_group_box_layout = QVBoxLayout()
-        deps_group_box.setLayout(deps_group_box_layout)
-
-        deps_label = QLabel(self.tr("Sort Dependencies"))
-        deps_label.setFont(GUIInfo().emphasis_font)
-        deps_group_box_layout.addWidget(deps_label)
+        # Use alternativePackageIds as satisfying dependencies
+        self.use_alternative_package_ids_as_satisfying_dependencies_checkbox = (
+            QCheckBox(self.tr("Use alternativePackageIds as satisfying dependencies"))
+        )
+        self.use_alternative_package_ids_as_satisfying_dependencies_checkbox.setToolTip(
+            self.tr(
+                "If enabled, an alternativePackageIds entry in About.xml can satisfy a mod's dependency when the main dependency is missing. \n"
+                "E.g., 'oels.vehiclemapframework', alternatives: 'oels.vehiclemapframework.dev'"
+            )
+        )
+        deps_group_box_layout.addWidget(
+            self.use_alternative_package_ids_as_satisfying_dependencies_checkbox
+        )
 
         self.check_deps_checkbox = QCheckBox(
             self.tr("Prompt user to download dependencies when click in Sort")
         )
         deps_group_box_layout.addWidget(self.check_deps_checkbox)
 
-        tab_layout.addStretch()
+        # XML parsing behavior group
+        xml_parsing_group_box = QGroupBox()
+        tab_layout.addWidget(xml_parsing_group_box)
 
-        explanatory_text = ""
-        explanatory_label = QLabel(explanatory_text)
-        explanatory_label.setWordWrap(True)
-        tab_layout.addWidget(explanatory_label)
+        xml_parsing_group_box_layout = QVBoxLayout()
+        xml_parsing_group_box.setLayout(xml_parsing_group_box_layout)
+
+        # Prefer versioned About.xml tags over base tags
+        xml_parsing_explanatory_label = QLabel(self.tr("XML Parsing Behavior"))
+        xml_parsing_explanatory_label.setFont(GUIInfo().emphasis_font)
+        xml_parsing_group_box_layout.addWidget(xml_parsing_explanatory_label)
+        self.prefer_versioned_about_tags_checkbox = QCheckBox(
+            self.tr("Prefer versioned About.xml tags over base tags")
+        )
+        self.prefer_versioned_about_tags_checkbox.setToolTip(
+            self.tr(
+                "When enabled, *ByVersion tags take precedence over the base tags, \n"
+                "If a matching version tag exists but is empty, the base tag is ignored. \n"
+                "e.g.(modDependenciesByVersion, loadAfterByVersion, loadBeforeByVersion, incompatibleWithByVersion, descriptionsByVersion)"
+            )
+        )
+
+        xml_parsing_group_box_layout.addWidget(
+            self.prefer_versioned_about_tags_checkbox
+        )
+
+        # Mod list options group
+        modlist_option_group_box = QGroupBox()
+        tab_layout.addWidget(modlist_option_group_box)
+
+        modlist_option_group_box_layout = QVBoxLayout()
+        modlist_option_group_box.setLayout(modlist_option_group_box_layout)
+
+        modlist_option_label = QLabel(self.tr("Mod list options"))
+        modlist_option_label.setFont(GUIInfo().emphasis_font)
+        modlist_option_group_box_layout.addWidget(modlist_option_label)
+
+        # Download missing mods checkbox
+        self.download_missing_mods_checkbox = QCheckBox(
+            self.tr("Download missing mods automatically")
+        )
+        self.download_missing_mods_checkbox.setToolTip(
+            self.tr(
+                "Notifies to download mods that may be missing in the active modlist"
+            )
+        )
+        modlist_option_group_box_layout.addWidget(self.download_missing_mods_checkbox)
+
+        # Duplicate mod notification checkbox
+        self.show_duplicate_mods_warning_checkbox = QCheckBox(
+            self.tr("Show duplicate mods warning")
+        )
+        self.show_duplicate_mods_warning_checkbox.setToolTip(
+            self.tr("Notifies and displays the mods that have the same packageid")
+        )
+        modlist_option_group_box_layout.addWidget(
+            self.show_duplicate_mods_warning_checkbox
+        )
+
+        # Mod type filter checkbox
+        self.mod_type_filter_checkbox = QCheckBox(self.tr("Enable mod type filter"))
+        self.mod_type_filter_checkbox.setToolTip(
+            self.tr(
+                "Add icons and filtering options for easy mods identification and grouping"
+            )
+        )
+        modlist_option_group_box_layout.addWidget(self.mod_type_filter_checkbox)
+
+        # Hide invalid mod filtering checkbox
+        self.hide_invalid_mods_when_filtering_checkbox = QCheckBox(
+            self.tr("Hide invalid mods when filtering")
+        )
+        self.hide_invalid_mods_when_filtering_checkbox.setToolTip(
+            self.tr("Hides invalid mods, not recommended to enable")
+        )
+        modlist_option_group_box_layout.addWidget(
+            self.hide_invalid_mods_when_filtering_checkbox
+        )
+
+        # Inactive mods sorting group
+        self.inactive_mods_sorting_group_box = QGroupBox()
+        tab_layout.addWidget(self.inactive_mods_sorting_group_box)
+
+        inactive_mods_sorting_group_box_layout = QVBoxLayout()
+        self.inactive_mods_sorting_group_box.setLayout(
+            inactive_mods_sorting_group_box_layout
+        )
+
+        inactive_mods_sorting_label = QLabel(self.tr("Inactive Mods Sorting"))
+        inactive_mods_sorting_label.setFont(GUIInfo().emphasis_font)
+        inactive_mods_sorting_group_box_layout.addWidget(inactive_mods_sorting_label)
+
+        # Inactive mods sorting options checkbox
+        self.enable_inactive_mods_sorting_checkbox = QCheckBox(
+            self.tr("Enable inactive mods sorting")
+        )
+        self.enable_inactive_mods_sorting_checkbox.setToolTip(
+            self.tr(
+                "Additional options like name, author, folder size, modified date will be available in the mods panel for sorting inactive mods \n"
+                "Disabling this can improve performance by avoiding heavy calculations."
+            )
+        )
+        inactive_mods_sorting_group_box_layout.addWidget(
+            self.enable_inactive_mods_sorting_checkbox
+        )
+
+        self.save_inactive_mods_sort_state_checkbox = QCheckBox(
+            self.tr("Save inactive mods sort state")
+        )
+        inactive_mods_sorting_group_box_layout.addWidget(
+            self.save_inactive_mods_sort_state_checkbox
+        )
+
+        tab_layout.addStretch()
 
     def _do_db_builder_tab(self) -> None:
         tab = QWidget()
@@ -1003,11 +1187,63 @@ This basically preserves your mod coloring, user notes etc. for this many second
         self.todds_preset_optimized_radio.toggled.connect(self._on_preset_radio_toggled)
         self.todds_preset_custom_radio.toggled.connect(self._on_preset_radio_toggled)
 
+    def _do_external_tools_tab(self) -> None:
+        tab = QWidget()
+        self.tab_widget.addTab(tab, self.tr("External Tools"))
+
+        tab_layout = QVBoxLayout(tab)
+        tab_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
+
+        group_box = QGroupBox()
+        tab_layout.addWidget(group_box)
+
+        group_layout = QVBoxLayout()
+        group_box.setLayout(group_layout)
+
+        header_layout = QHBoxLayout()
+        group_layout.addLayout(header_layout)
+
+        section_label = QLabel(self.tr("Text Editor command location"))
+        section_label.setFont(GUIInfo().emphasis_font)
+        header_layout.addWidget(section_label)
+
+        self.text_editor_location_choose_button = QToolButton()
+        self.text_editor_location_choose_button.setText(self.tr("Choose…"))
+        header_layout.addWidget(self.text_editor_location_choose_button)
+
+        self.text_editor_location = QLineEdit()
+        self.text_editor_location.setTextMargins(GUIInfo().text_field_margins)
+        self.text_editor_location.setFixedHeight(GUIInfo().default_font_line_height * 2)
+        group_layout.addWidget(self.text_editor_location)
+
+        folder_arg_label = QLabel(self.tr("Additional Arguments (Opening Folders)"))
+        group_layout.addWidget(folder_arg_label)
+        self.text_editor_folder_arg = QLineEdit()
+        self.text_editor_folder_arg.setTextMargins(GUIInfo().text_field_margins)
+        self.text_editor_folder_arg.setFixedHeight(
+            GUIInfo().default_font_line_height * 2
+        )
+        group_layout.addWidget(self.text_editor_folder_arg)
+
+        file_arg_label = QLabel(self.tr("Additional Arguments (Opening Single File)"))
+        group_layout.addWidget(file_arg_label)
+        self.text_editor_file_arg = QLineEdit()
+        self.text_editor_file_arg.setTextMargins(GUIInfo().text_field_margins)
+        self.text_editor_file_arg.setFixedHeight(GUIInfo().default_font_line_height * 2)
+        group_layout.addWidget(self.text_editor_file_arg)
+
     def _on_preset_radio_toggled(self, checked: bool) -> None:
         if self.todds_preset_custom_radio.isChecked():
             self.todds_custom_command_lineedit.setEnabled(True)
         else:
             self.todds_custom_command_lineedit.setEnabled(False)
+
+    def _on_steam_integration_toggled(self) -> None:
+        checked = self.steam_client_integration_checkbox.isChecked()
+        self.steam_mods_folder_location.setEnabled(checked)
+        self.steam_mods_folder_location_open_button.setEnabled(checked)
+        self.steam_mods_folder_location_choose_button.setEnabled(checked)
+        self.steam_mods_folder_location_clear_button.setEnabled(checked)
 
     def _do_themes_tab(self) -> None:
         tab = QWidget()
@@ -1397,21 +1633,6 @@ This basically preserves your mod coloring, user notes etc. for this many second
         )
         group_layout.addWidget(self.watchdog_checkbox)
 
-        self.mod_type_filter_checkbox = QCheckBox(self.tr("Enable mod type filter"))
-        group_layout.addWidget(self.mod_type_filter_checkbox)
-
-        self.hide_invalid_mods_when_filtering_checkbox = QCheckBox(
-            self.tr("Hide invalid mods when filtering")
-        )
-        group_layout.addWidget(self.hide_invalid_mods_when_filtering_checkbox)
-
-        # Moved to Performance tab under "Integration with recent save"
-
-        self.show_duplicate_mods_warning_checkbox = QCheckBox(
-            self.tr("Show duplicate mods warning")
-        )
-        group_layout.addWidget(self.show_duplicate_mods_warning_checkbox)
-
         # Clear button behavior
         self.clear_moves_dlc_checkbox = QCheckBox(self.tr("Clear also moves DLC"))
         group_layout.addWidget(self.clear_moves_dlc_checkbox)
@@ -1492,18 +1713,28 @@ This basically preserves your mod coloring, user notes etc. for this many second
         )
         group_layout.addWidget(self.update_databases_on_startup_checkbox)
 
-        # Prefer versioned About.xml tags over base tags
-        self.prefer_versioned_about_tags_checkbox = QCheckBox(
-            self.tr("Prefer versioned About.xml tags over base tags")
+        # Put checkbox, label and spinbox on the same horizontal line
+        backup_layout = QHBoxLayout()
+        self.enable_backup_before_update_checkbox = QCheckBox(
+            self.tr("Create backup before RimSort update")
         )
-        self.prefer_versioned_about_tags_checkbox.setToolTip(
+        self.enable_backup_before_update_checkbox.setToolTip(
             self.tr(
-                "When enabled, *ByVersion tags (e.g., modDependenciesByVersion, loadAfterByVersion, "
-                "loadBeforeByVersion, incompatibleWithByVersion, descriptionsByVersion) take precedence "
-                "over the base tags. If a matching version tag exists but is empty, the base tag is ignored."
+                "Recommended to keep this enabled as it creates a backup before updating RimSort, "
+                "This helps prevent any unwanted changes or data getting deleted."
             )
         )
-        group_layout.addWidget(self.prefer_versioned_about_tags_checkbox)
+        backup_layout.addWidget(self.enable_backup_before_update_checkbox)
+
+        max_backups_label = QLabel(self.tr("Maximum number of backups to keep:"))
+        backup_layout.addWidget(max_backups_label)
+
+        self.max_backups_spinbox = QSpinBox()
+        self.max_backups_spinbox.setRange(1, 10)
+        self.max_backups_spinbox.setValue(3)
+        backup_layout.addWidget(self.max_backups_spinbox)
+
+        group_layout.addLayout(backup_layout)
 
         run_args_group = QGroupBox()
         tab_layout.addWidget(run_args_group)

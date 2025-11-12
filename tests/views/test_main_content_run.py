@@ -17,13 +17,22 @@ from app.views.main_content_panel import MainContent
 class DummySettings:
     def __init__(self) -> None:
         self.current_instance = "inst1"
-        # Toggle filter for mod type filtering
-        self.mod_type_filter_toggle = False
-        self.enable_advanced_filtering = True
-        # Instance data with dummy game_folder and run_args
+        # Mod list options
+        self.try_download_missing_mods = True
+        self.duplicate_mods_warning = True
+        self.mod_type_filter = True
+        self.hide_invalid_mods_when_filtering = False
+        self.backup_saves_on_launch = False
+        # Inactive mods sort settings
+        self.inactive_mods_sorting = True
+        self.save_inactive_mods_sort_state = False
+        self.inactive_mods_sort_key = "FILESYSTEM_MODIFIED_TIME"
+        self.inactive_mods_sort_descending = True
+        # Instance data with dummy game_folder, config_folder and run_args
         self.instances = {
             "inst1": SimpleNamespace(
                 game_folder="/fake/path",
+                config_folder="/fake/config",
                 run_args=["--test"],
                 steam_client_integration=False,
             )
@@ -104,48 +113,56 @@ def main_content(
     # Patch _do_save to capture calls
     save_calls: List[bool] = []
     monkeypatch.setattr(mc, "_do_save", lambda: save_calls.append(True))
+    # Mock check_if_essential_paths_are_set to return True
+    monkeypatch.setattr(
+        mc, "check_if_essential_paths_are_set", lambda prompt=True: True
+    )
 
     yield mc, save_calls
 
     # Cleanup: delete the widget to avoid Qt object reuse issues
     mc.deleteLater()
+    qapp.processEvents()
+    # Reset singleton for next test
+    MainContent._instance = None
 
 
-def test_cancel_on_unsaved(patch_dialogue: Mock, patch_launch: List[Tuple[Path, List[str]]], main_content: Tuple[MainContent, List[bool]]) -> None:
+@pytest.fixture
+def unsaved_main_content(
+    main_content: Tuple[MainContent, List[bool]],
+) -> Tuple[MainContent, List[bool]]:
     mc, save_calls = main_content
     # Set unsaved changes
-    mc.mods_panel.active_mods_list.uuids = ['a', 'b']
-    mc.active_mods_uuids_last_save = ['a']
-    # Simulate Cancel
-    patch_dialogue.return_value = QMessageBox.StandardButton.Cancel
-    mc._do_run_game()
-    assert save_calls == []
-    assert patch_launch == []
-
-
-def test_run_anyway_on_unsaved(patch_dialogue: Mock, patch_launch: List[Tuple[Path, List[str]]], main_content: Tuple[MainContent, List[bool]]) -> None:
-    mc, save_calls = main_content
-    mc.mods_panel.active_mods_list.uuids = ['a', 'b']
-    mc.active_mods_uuids_last_save = ['a']
-    patch_dialogue.return_value = mc.tr('Run Anyway')
-    mc._do_run_game()
-    assert save_calls == []
-    # launch_game_process with dummy args
-    assert patch_launch == [(Path('/fake/path'), ['--test'])]
-
-
-def test_save_and_run_on_unsaved(
-    patch_dialogue: Mock,
-    patch_launch: List[Tuple[Path, List[str]]],
-    main_content: Tuple[MainContent, List[bool]],
-) -> None:
-    mc, save_calls = main_content
     mc.mods_panel.active_mods_list.uuids = ["a", "b"]
     mc.active_mods_uuids_last_save = ["a"]
-    patch_dialogue.return_value = mc.tr("Save and Run")
+    return mc, save_calls
+
+
+@pytest.mark.parametrize(
+    "dialogue_return, expected_save_calls, expected_launch",
+    [
+        (QMessageBox.StandardButton.Cancel, [], []),
+        ("Run Anyway", [], [(Path("/fake/path"), ["--test"])]),
+        ("Save and Run", [True], [(Path("/fake/path"), ["--test"])]),
+    ],
+)
+def test_run_game_with_unsaved_changes(
+    patch_dialogue: Mock,
+    patch_launch: List[Tuple[Path, List[str]]],
+    unsaved_main_content: Tuple[MainContent, List[bool]],
+    dialogue_return: QMessageBox.StandardButton | str,
+    expected_save_calls: List[bool],
+    expected_launch: List[Tuple[Path, List[str]]],
+) -> None:
+    mc, save_calls = unsaved_main_content
+    patch_dialogue.return_value = (
+        dialogue_return
+        if isinstance(dialogue_return, QMessageBox.StandardButton)
+        else mc.tr(dialogue_return)
+    )
     mc._do_run_game()
-    assert save_calls == [True]
-    assert patch_launch == [(Path("/fake/path"), ["--test"])]
+    assert save_calls == expected_save_calls
+    assert patch_launch == expected_launch
 
 
 def test_run_without_unsaved(

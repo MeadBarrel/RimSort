@@ -77,10 +77,13 @@ SEARCH_DATA_SOURCE_FILTER_INDEXES = [
     "xml",
 ]
 KNOWN_MOD_REPLACEMENTS = {
-    "brrainz.harmony": {"zetrith.prepatcher"},
+    "brrainz.harmony": {"zetrith.prepatcher", "jikulopo.prepatcher"},
     "aoba.motorization.engine": {"rimthunder.core"},
 }
 KNOWN_TIER_ZERO_MODS = {
+    "zetrith.prepatcher",
+    "brrainz.harmony",
+    "brrainz.visualexceptions",
     "ludeon.rimworld",
     "ludeon.rimworld.royalty",
     "ludeon.rimworld.ideology",
@@ -89,9 +92,17 @@ KNOWN_TIER_ZERO_MODS = {
     "ludeon.rimworld.odyssey",
 }
 KNOWN_TIER_ONE_MODS = {
-    "vanillaexpanded.backgrounds",
-    "redmattis.betterprerequisites",
     "adaptive.storage.framework",
+    "aoba.framework",
+    "aoba.exosuit.framework",
+    "ebsg.framework",
+    "imranfish.xmlextensions",
+    "thesepeople.ritualattachableoutcomes",
+    "ohno.asf.ab.local",
     "oskarpotocki.vanillafactionsexpanded.core",
+    "owlchemist.cherrypicker",
+    "redmattis.betterprerequisites",
+    "smashphil.vehicleframework",
     "unlimitedhugs.hugslib",
+    "vanillaexpanded.backgrounds",
 }

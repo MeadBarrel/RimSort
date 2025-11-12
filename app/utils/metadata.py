@@ -27,7 +27,7 @@ from app.utils.constants import (
     DEFAULT_USER_RULES,
     RIMWORLD_DLC_METADATA,
 )
-from app.utils.generic import directories
+from app.utils.generic import directories, scanpath
 from app.utils.schema import generate_rimworld_mods_list, validate_rimworld_mods_list
 from app.utils.steam.steamcmd.wrapper import SteamcmdInterface
 from app.utils.steam.steamfiles.wrapper import acf_to_dict, dict_to_acf
@@ -46,10 +46,14 @@ from app.views.dialogue import (
 
 
 class ModReplacement:
-    def __init__(self, name: str, author: str, pfid: str):
+    def __init__(
+        self, name: str, author: str, packageid: str, pfid: str, supportedversions: str
+    ):
         self.name = name
         self.author = author
+        self.packageid = packageid
         self.pfid = pfid
+        self.supportedversions = supportedversions
 
 
 # TODO: Someday, it is probably worth typing out the keys
@@ -1452,7 +1456,9 @@ class MetadataManager(QObject):
         return ModReplacement(
             name=replacement_data["ReplacementName"],
             author=replacement_data["ReplacementAuthor"],
+            packageid=replacement_data["ReplacementModId"],
             pfid=replacement_data["ReplacementSteamId"],
+            supportedversions=replacement_data["ReplacementVersions"],
         )
 
     def process_batch(
@@ -1685,7 +1691,7 @@ class MetadataManager(QObject):
                     else:
                         dep_id = dep_entry
 
-                    consider_alternatives = self.settings_controller.settings.consider_alternative_package_ids
+                    consider_alternatives = self.settings_controller.settings.use_alternative_package_ids_as_satisfying_dependencies
                     satisfied = dep_id in active_mod_ids
                     if not satisfied and consider_alternatives:
                         satisfied = any(alt in active_mod_ids for alt in alt_ids)
@@ -1745,7 +1751,7 @@ class ModParser(QRunnable):
         about_folder_name = "About"
         about_file_name = "About.xml"
         # Look for a case-insensitive "About" folder
-        for temp_file in os.scandir(mod_directory):
+        for temp_file in scanpath(mod_directory):
             if (
                 temp_file.name.lower() == about_folder_name.lower()
                 and temp_file.is_dir()
@@ -1755,7 +1761,7 @@ class ModParser(QRunnable):
                 break
             # Look for a case-insensitive "About.xml" file
         if not invalid_about_folder_path_found:
-            for temp_file in os.scandir(str((directory_path / about_folder_name))):
+            for temp_file in scanpath(str((directory_path / about_folder_name))):
                 if (
                     temp_file.name.lower() == about_file_name.lower()
                     and temp_file.is_file()
@@ -1765,7 +1771,7 @@ class ModParser(QRunnable):
                     break
         # Look for .rsc scenario files to load metadata from if we didn't find About.xml
         if invalid_about_file_path_found:
-            for temp_file in os.scandir(mod_directory):
+            for temp_file in scanpath(mod_directory):
                 if temp_file.name.lower().endswith(".rsc") and not temp_file.is_dir():
                     scenario_rsc_file = temp_file.name
                     scenario_rsc_found = True
@@ -1779,7 +1785,7 @@ class ModParser(QRunnable):
         # Look for a case-insensitive "PublishedFileId.txt" file if we didn't find a pfid
         elif not pfid and not invalid_about_folder_path_found:
             pfid_file_name = "PublishedFileId.txt"
-            for temp_file in os.scandir(str((directory_path / about_folder_name))):
+            for temp_file in scanpath(str((directory_path / about_folder_name))):
                 if (
                     temp_file.name.lower() == pfid_file_name.lower()
                     and temp_file.is_file()
@@ -1840,6 +1846,16 @@ class ModParser(QRunnable):
                         ("authors" if key.lower() == "author" else key): value
                         for key, value in mod_metadata.items()
                     }
+                    # Normalize authors to a string
+                    authors = mod_metadata.get("authors")
+                    if isinstance(authors, dict) and authors.get("li"):
+                        mod_metadata["authors"] = ", ".join(authors["li"])
+                    elif isinstance(authors, list):
+                        mod_metadata["authors"] = ", ".join(authors)
+                    elif isinstance(authors, str):
+                        pass  # Keep as is
+                    else:
+                        mod_metadata["authors"] = "Unknown"
                     # Make sure <supportedversions> or <targetversion> is correct format
                     if mod_metadata.get("supportedversions") and not isinstance(
                         mod_metadata.get("supportedversions"), dict
@@ -3110,5 +3126,3 @@ def recursively_update_dict(
         for key in purge_keys:
             if key in a_dict:
                 del a_dict[key]
-
-            # (removed misplaced block: loadBefore byVersion processing belongs in compile_metadata)

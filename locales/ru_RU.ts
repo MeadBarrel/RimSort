@@ -1,155 +1,155 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE TS>
 <TS version="2.1" language="ru_RU">
 <context>
     <name>AcfLogReader</name>
     <message>
         <source>Ready</source>
-        <translation type="unfinished">Готово</translation>
+        <translation>Готовый</translation>
     </message>
     <message>
         <source>Search...</source>
-        <translation type="unfinished">Поиск...</translation>
+        <translation>Поиск...</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Обновить</translation>
+        <translation>Обновлять</translation>
     </message>
     <message>
         <source>Import ACF Data</source>
-        <translation type="unfinished">Импортировать данные ACF</translation>
+        <translation>Импортируйте данные ACF</translation>
     </message>
     <message>
         <source>Export ACF Data</source>
-        <translation type="unfinished">Экспортировать данные ACF</translation>
+        <translation>Экспорт данных ACF</translation>
     </message>
     <message>
         <source>Export to CSV</source>
-        <translation type="unfinished">Экспортировать в CSV</translation>
+        <translation>Экспорт в CSV</translation>
     </message>
     <message>
         <source>Loaded {count} items | Last updated: {time}</source>
-        <translation type="unfinished">Загружено {count} элементов | Последнее обновление: {time}</translation>
+        <translation>Загружен {count} элементы |Последнее обновление:  {time}</translation>
     </message>
     <message>
         <source>Export canceled by user.</source>
-        <translation type="unfinished">Экспорт отменен пользователем.</translation>
+        <translation>Экспорт отменен пользователем.</translation>
     </message>
     <message>
         <source>Export failed: Permission denied - check file permissions</source>
-        <translation type="unfinished">Экспорт не удался: Доступ запрещен - проверьте права доступа к файлам</translation>
+        <translation>Ошибка экспорта: разрешение отказано - проверьте разрешения на файл</translation>
     </message>
     <message>
         <source>Export Error</source>
-        <translation type="unfinished">Ошибка экспорта</translation>
+        <translation>Экспортная ошибка</translation>
     </message>
     <message>
         <source>Export failed: File system error - {e}</source>
-        <translation type="unfinished">Экспорт не удался: Ошибка файловой системы - {e}</translation>
+        <translation>Ошибка экспорта: ошибка файловой системы - {e}</translation>
     </message>
     <message>
         <source>Export failed: File system error</source>
-        <translation type="unfinished">Экспорт не удался: Ошибка файловой системы</translation>
+        <translation>Ошибка экспорта: ошибка файловой системы</translation>
     </message>
     <message>
         <source>Exporting to CSV...</source>
-        <translation type="unfinished">Экспорт в CSV...</translation>
+        <translation>Экспорт в CSV ...</translation>
     </message>
     <message>
         <source>Exporting rows...</source>
-        <translation type="unfinished">Экспорт строк...</translation>
+        <translation>Экспорт рядов ...</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished">Отмена</translation>
+        <translation>Отмена</translation>
     </message>
     <message>
         <source>Export failed due to an unknown error</source>
-        <translation type="unfinished">Экспорт не удался из-за неизвестной ошибки</translation>
+        <translation>Экспорт не удался из -за неизвестной ошибки</translation>
     </message>
     <message>
         <source>View in Steam Workshop</source>
-        <translation type="unfinished">Просмотреть в Steam Workshop</translation>
+        <translation>Посмотреть на паровой мастерской</translation>
     </message>
     <message>
         <source>Open Mod Folder</source>
-        <translation type="unfinished">Открыть папку мода</translation>
+        <translation>Открыть папку мода</translation>
     </message>
     <message>
         <source>Published File ID</source>
-        <translation type="unfinished">ID опубликованного файла</translation>
+        <translation>Опубликованный идентификатор файла</translation>
     </message>
     <message>
         <source>Mod downloaded</source>
-        <translation type="unfinished"></translation>
+        <translation>Мод скачать</translation>
     </message>
     <message>
         <source>Updated on Workshop</source>
-        <translation type="unfinished"></translation>
+        <translation>Обновлено на семинаре</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="unfinished">Тип</translation>
+        <translation>Тип</translation>
     </message>
     <message>
         <source>Mod Name</source>
-        <translation type="unfinished">Имя мода</translation>
+        <translation>Имя мода</translation>
     </message>
     <message>
         <source>Mod Path</source>
-        <translation type="unfinished">Путь к моду</translation>
+        <translation>МОД ПАТ</translation>
     </message>
     <message>
         <source>Conform acf import</source>
-        <translation type="unfinished">Соответствовать импорту acf</translation>
+        <translation>Соответствует импорту ACF</translation>
     </message>
     <message>
         <source>This will replace your current steamcmd .acf file</source>
-        <translation type="unfinished">Это заменит ваш текущий файл .acf steamcmd</translation>
+        <translation>Это заменит ваш текущий файл SteamCmd .acf</translation>
     </message>
     <message>
         <source>Are you sure you want to import .acf? THis only works for steamcmd</source>
-        <translation type="unfinished">Вы уверены, что хотите импортировать .acf? Это работает только для steamcmd</translation>
+        <translation>Вы уверены, что хотите импортировать .acf?Это работает только для SteamCmd</translation>
     </message>
     <message>
         <source>Import .acf</source>
-        <translation type="unfinished">Импортировать .acf</translation>
+        <translation>Импорт .acf</translation>
     </message>
     <message>
         <source>SteamCMD interface not properly initialized</source>
-        <translation type="unfinished">Интерфейс SteamCMD не инициализирован должным образом</translation>
+        <translation>Интерфейс SteamCmd не инициализирован должным образом</translation>
     </message>
     <message>
         <source>ACF file not found: {acf_path}</source>
-        <translation type="unfinished">Файл ACF не найден: {acf_path}</translation>
+        <translation>Файл ACF не найден: {acf_path}</translation>
     </message>
     <message>
         <source>ACF file not found at: {acf_path}</source>
-        <translation type="unfinished">Файл ACF не найден по адресу: {acf_path}</translation>
+        <translation>Файл ACF не найден по адресу: {acf_path}</translation>
     </message>
     <message>
         <source>Invalid file path provided for export: {file_path}</source>
-        <translation type="unfinished">Предоставлен недопустимый путь к файлу для экспорта: {file_path}</translation>
+        <translation>Неверный путь файла, предусмотренная для экспорта: {file_path}</translation>
     </message>
     <message>
         <source>Successfully exported ACF to {file_path}</source>
-        <translation type="unfinished">Успешно экспортирован ACF в {file_path}</translation>
+        <translation>Успешно экспортирован ACF в {file_path}</translation>
     </message>
     <message>
         <source>Export Success</source>
-        <translation type="unfinished">Экспорт успешен</translation>
+        <translation>Экспортный успех</translation>
     </message>
     <message>
         <source>Export failed: {e}</source>
-        <translation type="unfinished">Экспорт не удался: {e}</translation>
+        <translation>Экспорт не удался: {e}</translation>
     </message>
     <message>
         <source>Export failed</source>
-        <translation type="unfinished">Экспорт не удался</translation>
+        <translation>Экспорт не удался</translation>
     </message>
     <message>
         <source>Exportfailed unknown exception occurred</source>
-        <translation type="unfinished">Экспорт не удался: произошла неизвестная ошибка</translation>
+        <translation>Произошло экспорт. Неизвестное исключение произошло</translation>
     </message>
 </context>
 <context>
@@ -188,6 +188,66 @@
     <message>
         <source>Cannot import collection without SteamDB supplied! Please configure Steam Workshop Database in settings.</source>
         <translation>Невозможно импортировать коллекцию без предоставленного SteamDB! Пожалуйста, настройте базу данных Steam Workshop в настройках.</translation>
+    </message>
+</context>
+<context>
+    <name>DuplicateModsPanel</name>
+    <message>
+        <source>Mod Name</source>
+        <translation>Имя мода</translation>
+    </message>
+    <message>
+        <source>Author</source>
+        <translation>Автор</translation>
+    </message>
+    <message>
+        <source>Package ID</source>
+        <translation>Идентификатор пакета</translation>
+    </message>
+    <message>
+        <source>PublishedFileId</source>
+        <translation>Опубликованныйфилеид</translation>
+    </message>
+    <message>
+        <source>Source</source>
+        <translation>Источник</translation>
+    </message>
+    <message>
+        <source>Mod Downloaded</source>
+        <translation>Скачать мод</translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation>Путь</translation>
+    </message>
+    <message>
+        <source>Workshop Page</source>
+        <translation>Страница мастерской</translation>
+    </message>
+    <message>
+        <source>RimSort - Duplicate Mods Found</source>
+        <translation>RimSort — найдены повторяющиеся моды</translation>
+    </message>
+    <message>
+        <source>Duplicate mods detected!</source>
+        <translation>Обнаружены дубликаты модов!</translation>
+    </message>
+    <message>
+        <source>
+The following table displays duplicate mods grouped by package ID. Select which versions to keep and choose an action.</source>
+        <translation>В следующей таблице показаны повторяющиеся моды, сгруппированные по идентификатору пакета.Выберите, какие версии сохранить, и выберите действие.</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Удалить</translation>
+    </message>
+    <message>
+        <source>Delete Selected Duplicates...</source>
+        <translation>Удалить выбранные дубликаты...</translation>
+    </message>
+    <message>
+        <source>Open Workshop Page</source>
+        <translation>Открыть страницу мастерской</translation>
     </message>
 </context>
 <context>
@@ -272,7 +332,7 @@ Try simplifying your pattern or check for syntax errors.</source>
         <translation>Ошибка доступа к файлу</translation>
     </message>
     <message>
-        <source>RimSort doesn&apos;t have permission to access some files.</source>
+        <source>RimSort doesn't have permission to access some files.</source>
         <translation>RimSort не имеет разрешения на доступ к некоторым файлам.</translation>
     </message>
     <message>
@@ -294,10 +354,10 @@ Try running RimSort with administrator privileges or check folder permissions.</
     <message>
         <source>{error_msg}
 
-Try searching in smaller batches or use the &apos;streaming search&apos; method for very large files.</source>
+Try searching in smaller batches or use the 'streaming search' method for very large files.</source>
         <translation>{error_msg}
 
-Попробуйте искать меньшими партиями или используйте метод &apos;поточного поиска&apos; для очень больших файлов.</translation>
+Попробуйте искать меньшими партиями или используйте метод 'поточного поиска' для очень больших файлов.</translation>
     </message>
     <message>
         <source>Search Error</source>
@@ -385,14 +445,14 @@ Please check your settings and try again.</source>
     <message>
         <source>Enable to use regular expressions in search
 Examples:
-- &apos;def.*\(&apos; to find function definitions
-- &apos;&lt;[^&gt;]+&gt;&apos; to find XML tags
-- &apos;\d+\.\d+(\.\d+)?&apos; to find version numbers</source>
+- 'def.*\(' to find function definitions
+- '&lt;[^&gt;]+&gt;' to find XML tags
+- '\d+\.\d+(\.\d+)?' to find version numbers</source>
         <translation>Включите, чтобы использовать регулярные выражения в поиске
 Примеры:
-- &apos;def.*\(&apos; для поиска определений функций
-- &apos;&lt;[^&gt;]+&gt;&apos; для поиска XML-тегов
-- &apos;\d+\.\d+(\.\d+)?&apos; для поиска номеров версий</translation>
+- 'def.*\(' для поиска определений функций
+- '&lt;[^&gt;]+&gt;' для поиска XML-тегов
+- '\d+\.\d+(\.\d+)?' для поиска номеров версий</translation>
     </message>
     <message>
         <source>XML files only</source>
@@ -534,11 +594,11 @@ When unchecked, search all file types with standard search.</source>
     </message>
     <message>
         <source>Right-click a result for actions</source>
-        <translation type="unfinished"></translation>
+        <translation>Щелкните правой кнопкой мыши результат действий</translation>
     </message>
     <message>
         <source>Right-click for actions</source>
-        <translation type="unfinished"></translation>
+        <translation>Щелкните правой кнопкой мыши для действий</translation>
     </message>
 </context>
 <context>
@@ -556,19 +616,19 @@ When unchecked, search all file types with standard search.</source>
     <name>LanguageController</name>
     <message>
         <source>Language Changed</source>
-        <translation type="unfinished"></translation>
+        <translation>Язык изменился</translation>
     </message>
     <message>
         <source>The language has been updated.</source>
-        <translation type="unfinished"></translation>
+        <translation>Язык был обновлен.</translation>
     </message>
     <message>
         <source>Restart the application to apply the change. Restart now?</source>
-        <translation type="unfinished"></translation>
+        <translation>Перезагрузите приложение, чтобы применить изменение.Перезапустить сейчас?</translation>
     </message>
     <message>
         <source>Restart</source>
-        <translation type="unfinished"></translation>
+        <translation>Перезапуск</translation>
     </message>
 </context>
 <context>
@@ -592,18 +652,6 @@ Would you like to configure them now?</source>
 Хотите настроить их сейчас?</translation>
     </message>
     <message>
-        <source>Duplicate mod(s) found</source>
-        <translation>Обнаружены дублирующиеся моды</translation>
-    </message>
-    <message>
-        <source>Duplicate mods(s) found for package ID(s) in your ModsConfig.xml (active mods list)</source>
-        <translation>Обнаружены дублирующиеся моды для ID пакета в вашем ModsConfig.xml (список активных модов)</translation>
-    </message>
-    <message>
-        <source>The following list of mods were set active in your ModsConfig.xml and duplicate instances were found of these mods in your mod data sources. The vanilla game will use the first &apos;local mod&apos; of a particular package ID that is found - so RimSort will also adhere to this logic.</source>
-        <translation>Следующий список модов был активирован в вашем ModsConfig.xml, и были найдены дублирующиеся экземпляры этих модов в ваших источниках данных модов. Обычная игра будет использовать первый &apos;локальный мод&apos; определенного ID пакета, который будет найден, поэтому RimSort также будет следовать этой логике.</translation>
-    </message>
-    <message>
         <source>Could not find data for some mods!</source>
         <translation>Не удалось найти данные для некоторых модов!</translation>
     </message>
@@ -614,56 +662,6 @@ Are your game configuration paths correct?</source>
         <translation>Следующий список модов был активирован в вашем списке модов, но для этих модов не удалось найти данные в локальных/рабочих путях модов.
 
 Правильны ли ваши пути конфигурации игры?</translation>
-    </message>
-    <message>
-        <source>Update skipped</source>
-        <translation>Обновление пропущено</translation>
-    </message>
-    <message>
-        <source>You are running from Python interpreter.</source>
-        <translation>Вы работаете из интерпретатора Python.</translation>
-    </message>
-    <message>
-        <source>Skipping update check...</source>
-        <translation>Проверка обновлений пропущена...</translation>
-    </message>
-    <message>
-        <source>Unable to retrieve latest release information</source>
-        <translation>Не удалось получить информацию о последнем релизе</translation>
-    </message>
-    <message>
-        <source>RimSort update found</source>
-        <translation>Обнаружено обновление RimSort</translation>
-    </message>
-    <message>
-        <source>You are running RimSort {current_version}
-Do you want to update now?</source>
-        <translation>Вы используете RimSort {current_version}
-Хотите обновить сейчас?</translation>
-    </message>
-    <message>
-        <source>Unable to complete update</source>
-        <translation>Не удалось завершить обновление</translation>
-    </message>
-    <message>
-        <source>Update downloaded</source>
-        <translation>Обновление загружено</translation>
-    </message>
-    <message>
-        <source>Do you want to proceed with the update?</source>
-        <translation>Хотите продолжить обновление?</translation>
-    </message>
-    <message>
-        <source>Failed to download update</source>
-        <translation>Не удалось загрузить обновление</translation>
-    </message>
-    <message>
-        <source>Failed to download latest RimSort release!</source>
-        <translation>Не удалось загрузить последнюю версию RimSort!</translation>
-    </message>
-    <message>
-        <source>Please check your internet connection and try again, You can also check &apos;https://github.com/RimSort/RimSort/releases&apos; directly.</source>
-        <translation>Пожалуйста, проверьте ваше интернет-соединение и попробуйте снова. Вы также можете проверить &apos;https://github.com/RimSort/RimSort/releases&apos; напрямую.</translation>
     </message>
     <message>
         <source>Scanning mod sources and populating metadata...</source>
@@ -694,7 +692,7 @@ Do you want to update now?</source>
         <translation>Важно</translation>
     </message>
     <message>
-        <source>You will need to redo Rentry import again after downloads complete. If there missing mods after download completes, they will be shown inside the missing mods panel. If RimSort is still not able to download some mods, It&apos;s due to the mod data not being available in both Rentry link and steam database.</source>
+        <source>You will need to redo Rentry import again after downloads complete. If there missing mods after download completes, they will be shown inside the missing mods panel. If RimSort is still not able to download some mods, It's due to the mod data not being available in both Rentry link and steam database.</source>
         <translation>Вам нужно будет повторно выполнить импорт Rentry после завершения загрузки. Если после завершения загрузки будут отсутствовать моды, они будут показаны в панели отсутствующих модов. Если RimSort все еще не может загрузить некоторые моды, это связано с тем, что данные модов недоступны как по ссылке Rentry, так и в базе данных Steam.</translation>
     </message>
     <message>
@@ -726,8 +724,32 @@ Do you want to update now?</source>
         <translation>Скопирован отчет о списке активных модов в буфер обмена...</translation>
     </message>
     <message>
-        <source>Click &quot;Show Details&quot; to see the full report!</source>
-        <translation>Нажмите &quot;Показать детали&quot;, чтобы увидеть полный отчет!</translation>
+        <source>Click "Show Details" to see the full report!</source>
+        <translation>Нажмите "Показать детали", чтобы увидеть полный отчет!</translation>
+    </message>
+    <message>
+        <source>Report too long</source>
+        <translation>Отчет слишком длинный</translation>
+    </message>
+    <message>
+        <source>Even the first mod exceeds the 200,000 character limit.</source>
+        <translation>Даже первый мод превышает лимит в 200 000 символов.</translation>
+    </message>
+    <message>
+        <source>Cannot upload this report to Rentry.co.</source>
+        <translation>Невозможно загрузить этот отчет на Rentry.co.</translation>
+    </message>
+    <message>
+        <source>The mod list report exceeds 200,000 characters.</source>
+        <translation>Отчет о списке модов превышает 200 000 символов.</translation>
+    </message>
+    <message>
+        <source>Rentry.co may reject uploads that are too long. Would you like to truncate the report to the first {max_mods} mods or cancel the upload?</source>
+        <translation>Rentry.co может отклонить слишком длинные загрузки.Хотите обрезать отчет до первых модов ({max_mods}) или отменить загрузку?</translation>
+    </message>
+    <message>
+        <source>Truncate to the first {max_mods} mods</source>
+        <translation>Усечь до первых модов: {max_mods}</translation>
     </message>
     <message>
         <source>Uploaded active mod list</source>
@@ -872,8 +894,8 @@ Do you want to update now?</source>
         <translation>Исполняемый файл SteamCMD не найден.</translation>
     </message>
     <message>
-        <source>Please setup an existing SteamCMD prefix, or setup a new prefix with &quot;Setup SteamCMD&quot;.</source>
-        <translation>Пожалуйста, настройте существующий префикс SteamCMD или создайте новый префикс с помощью &quot;Настроить SteamCMD&quot;.</translation>
+        <source>Please setup an existing SteamCMD prefix, or setup a new prefix with "Setup SteamCMD".</source>
+        <translation>Пожалуйста, настройте существующий префикс SteamCMD или создайте новый префикс с помощью "Настроить SteamCMD".</translation>
     </message>
     <message>
         <source>Processing Steam subscription action(s) via Steamworks API...</source>
@@ -1078,16 +1100,16 @@ A report of discrepancies is generated. You will be prompted for these paths in 
         <translation>Отчет о сравнении баз данных Steam: найдено {len}</translation>
     </message>
     <message>
-        <source>Click &apos;Show Details&apos; to see the full report!</source>
-        <translation>Нажмите &apos;Показать детали&apos;, чтобы увидеть полный отчет!</translation>
+        <source>Click 'Show Details' to see the full report!</source>
+        <translation>Нажмите 'Показать детали', чтобы увидеть полный отчет!</translation>
     </message>
     <message>
         <source>This operation will merge 2 databases, A &amp; B, by recursively updating A with B, barring exceptions.</source>
         <translation>Эта операция объединит 2 базы данных, A и B, рекурсивно обновляя A с помощью B, за исключением некоторых случаев.</translation>
     </message>
     <message>
-        <source>- This will effectively recursively overwrite A&apos;s key/value with B&apos;s key/value to the resultant database.
-- Exceptions will not be recursively updated. Instead, they will be overwritten with B&apos;s key entirely.
+        <source>- This will effectively recursively overwrite A's key/value with B's key/value to the resultant database.
+- Exceptions will not be recursively updated. Instead, they will be overwritten with B's key entirely.
 - The following exceptions will be made:
 
 	{DB_BUILDER_RECURSE_EXCEPTIONS}
@@ -1150,8 +1172,8 @@ The resultant database, C, is saved to a user-specified path. You will be prompt
         <translation>Используйте это вместо этого</translation>
     </message>
     <message>
-        <source>No suggestions were found in the &quot;Use This Instead&quot; database.</source>
-        <translation>Не найдено ни одной подсказки в базе данных &quot;Используйте это вместо этого&quot;.</translation>
+        <source>No suggestions were found in the "Use This Instead" database.</source>
+        <translation>Не найдено ни одной подсказки в базе данных "Используйте это вместо этого".</translation>
     </message>
     <message>
         <source>Failed to read existing database</source>
@@ -1160,34 +1182,6 @@ The resultant database, C, is saved to a user-specified path. You will be prompt
     <message>
         <source>Failed to read the existing database!</source>
         <translation>Не удалось прочитать существующую базу данных!</translation>
-    </message>
-    <message>
-        <source>An update to RimSort has been released: {latest_tag_name}</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Failed to find valid RimSort release for {system_info}</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Unable to retrieve release information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Failed to connect to GitHub API: {error}</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloading RimSort {tag_name} release...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Failed to launch update</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Could not start the update process.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Unsaved Changes</source>
@@ -1207,15 +1201,51 @@ The resultant database, C, is saved to a user-specified path. You will be prompt
     </message>
     <message>
         <source>Import from RimWorld Save File</source>
-        <translation type="unfinished"></translation>
+        <translation>Импорт из файла сохранения Rimworld</translation>
     </message>
     <message>
         <source>RimWorld save (*.rws);;All files (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Rimworld Save (*.rws) ;; Все файлы (*.*)</translation>
     </message>
     <message>
         <source>Uploaded {path.name} to https://0x0.st/</source>
-        <translation type="unfinished"></translation>
+        <translation>Загружено {path.name} на https://0x0.st/</translation>
+    </message>
+    <message>
+        <source>Reset SteamCMD ACF data file</source>
+        <translation>Сбросить файл данных ACF SteamCmd</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to reset SteamCMD ACF data file?</source>
+        <translation>Вы уверены, что хотите сбросить файл данных ACF STARCMD?</translation>
+    </message>
+    <message>
+        <source>This file is created and used by steamcmd to track mod informaton, This action cannot be undone.</source>
+        <translation>Этот файл создается и используется SteamCMD для отслеживания Mod Informaton, это действие не может быть отменено.</translation>
+    </message>
+    <message>
+        <source>Successfully deleted SteamCMD ACF data file: {steamcmd_appworkshop_acf_path}</source>
+        <translation>Успешно удалил файл данных acf acf: {steamcmd_appworkshop_acf_path}</translation>
+    </message>
+    <message>
+        <source>ACF data file will be recreated when you download mods using steamcmd next time.</source>
+        <translation>Файл данных ACF будет воссоздан при загрузке модов с использованием SteamCMD в следующий раз.</translation>
+    </message>
+    <message>
+        <source>SteamCMD ACF data file does not exist</source>
+        <translation>File Data Data File STARCMD</translation>
+    </message>
+    <message>
+        <source>ACf file does not exist. It will be created when you download mods using steamcmd.</source>
+        <translation>Файл ACF не существует.Он будет создан при загрузке модов с помощью SteamCmd.</translation>
+    </message>
+    <message>
+        <source>Failed to open file.</source>
+        <translation>Не удалось открыть файл.</translation>
+    </message>
+    <message>
+        <source>Failed to open the file with default text editor. It may not exist.</source>
+        <translation>Не удалось открыть файл с помощью текстового редактора по умолчанию.Это может не существовать.</translation>
     </message>
 </context>
 <context>
@@ -1486,9 +1516,9 @@ Destination: {dest}</source>
     </message>
     <message>
         <source>Please reconfigure a repository in settings!
-A valid repository is a repository URL which is not empty and is prefixed with &quot;http://&quot; or &quot;https://&quot;</source>
+A valid repository is a repository URL which is not empty and is prefixed with "http://" or "https://"</source>
         <translation>Пожалуйста, перенастройте репозиторий в настройках!
-Действительный репозиторий - это URL-адрес репозитория, который не пуст и начинается с &quot;http://&quot; или &quot;https://&quot;</translation>
+Действительный репозиторий - это URL-адрес репозитория, который не пуст и начинается с "http://" или "https://"</translation>
     </message>
     <message>
         <source>Invalid repository URL</source>
@@ -1788,7 +1818,7 @@ Error: {error}</source>
     </message>
     <message>
         <source>{count} repositories were updated with their latest commits:</source>
-        <translation type="unfinished"></translation>
+        <translation>{count} репозитории были обновлены с их последними коммитами:</translation>
     </message>
 </context>
 <context>
@@ -1858,8 +1888,8 @@ Error: {error}</source>
         <translation>Укажите имя инстанса</translation>
     </message>
     <message>
-        <source>Input a unique name for the backed up instance that is not &quot;Default&quot;</source>
-        <translation>Введите уникальное имя для резервной копии инстанса, которое не является &quot;По умолчанию&quot;</translation>
+        <source>Input a unique name for the backed up instance that is not "Default"</source>
+        <translation>Введите уникальное имя для резервной копии инстанса, которое не является "По умолчанию"</translation>
     </message>
     <message>
         <source>Clone instance [{existing_instance_name}]</source>
@@ -1872,7 +1902,7 @@ Error: {error}</source>
     <message>
         <source>Workshop folder: {existing_instance_workshop_folder}
 
-RimSort can copy all of your Workshop mods to the new instance&apos;s local mods folder. This will effectively  convert any existing Steam client mods to SteamCMD mods that you can then  manage inside the new instance.
+RimSort can copy all of your Workshop mods to the new instance's local mods folder. This will effectively  convert any existing Steam client mods to SteamCMD mods that you can then  manage inside the new instance.
 
 Alternatively, you may keep your old Steam workshop folder preference. You can always change this later in the settings.
 
@@ -1946,16 +1976,12 @@ RimSort может скопировать все ваши моды Workshop в �
         <translation>Недопустимые пути: {path}</translation>
     </message>
     <message>
-        <source>Couldn&apos;t restore steamcmd symlink/junction</source>
+        <source>Couldn't restore steamcmd symlink/junction</source>
         <translation>Не удалось восстановить символическую ссылку/связь steamcmd</translation>
     </message>
     <message>
         <source>The steamcmd symlink/junction could not be restored as the local folder is not set or invalid. The symlink/junction will need to be manually recreated.</source>
         <translation>Символическая ссылка/связь steamcmd не может быть восстановлена, так как локальная папка не установлена или недействительна. Символическая ссылка/связь должна быть воссоздана вручную.</translation>
-    </message>
-    <message>
-        <source>An error occurred while restoring instance [{instance_controller.instance.name}].</source>
-        <translation>Произошла ошибка при восстановлении инстанса [{instance_controller.instance.name}].</translation>
     </message>
     <message>
         <source>The instance folder was not found after extracting the archive. Perhaps the archive is corrupt or the instance name is invalid.</source>
@@ -1978,8 +2004,8 @@ RimSort может скопировать все ваши моды Workshop в �
         <translation>Не удалось клонировать инстанс.</translation>
     </message>
     <message>
-        <source>Please enter a valid, unique instance name. It cannot be &apos;Default&apos; or empty.</source>
-        <translation>Пожалуйста, введите допустимое, уникальное имя инстанса. Оно не может быть &apos;По умолчанию&apos; или пустым.</translation>
+        <source>Please enter a valid, unique instance name. It cannot be 'Default' or empty.</source>
+        <translation>Пожалуйста, введите допустимое, уникальное имя инстанса. Оно не может быть 'По умолчанию' или пустым.</translation>
     </message>
     <message>
         <source>Create new instance [{instance_name}]</source>
@@ -2035,19 +2061,27 @@ RimSort может скопировать все ваши моды Workshop в �
     </message>
     <message>
         <source>Convert to SteamCMD</source>
-        <translation type="unfinished"></translation>
+        <translation>Преобразовать в SteamCmd</translation>
     </message>
     <message>
         <source>Keep Workshop Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Держите папку мастерской</translation>
     </message>
     <message>
         <source>Cancelled</source>
-        <translation type="unfinished"></translation>
+        <translation>Отменен</translation>
     </message>
     <message>
         <source>ACF Log Reader</source>
-        <translation type="unfinished"></translation>
+        <translation>Acf log reader</translation>
+    </message>
+    <message>
+        <source>Player Log</source>
+        <translation>Журнал журнал</translation>
+    </message>
+    <message>
+        <source>An error occurred while restoring instance [{name}].</source>
+        <translation>Произошла ошибка при восстановлении экземпляра [{name}].</translation>
     </message>
 </context>
 <context>
@@ -2087,10 +2121,6 @@ RimSort может скопировать все ваши моды Workshop в �
     <message>
         <source>To Rentry.co…</source>
         <translation>В Rentry.co…</translation>
-    </message>
-    <message>
-        <source>Upload Log</source>
-        <translation>Загрузить журнал</translation>
     </message>
     <message>
         <source>Open...</source>
@@ -2181,8 +2211,8 @@ RimSort может скопировать все ваши моды Workshop в �
         <translation>Инстансы</translation>
     </message>
     <message>
-        <source>Current: &quot;Default&quot;</source>
-        <translation>Текущий: &quot;По умолчанию&quot;</translation>
+        <source>Current: "Default"</source>
+        <translation>Текущий: "По умолчанию"</translation>
     </message>
     <message>
         <source>Backup Instance…</source>
@@ -2238,11 +2268,15 @@ RimSort может скопировать все ваши моды Workshop в �
     </message>
     <message>
         <source>From Save file…</source>
-        <translation type="unfinished"></translation>
+        <translation>Из файла сохранения…</translation>
     </message>
     <message>
         <source>RimSort GitHub…</source>
-        <translation type="unfinished"></translation>
+        <translation>Rimsort GitHub…</translation>
+    </message>
+    <message>
+        <source>Reset Mod Colors</source>
+        <translation>Сбросить цвета модов</translation>
     </message>
 </context>
 <context>
@@ -2272,7 +2306,7 @@ Please make sure your Database location settings are correct.</source>
     </message>
     <message>
         <source>Configured {db_type} DB path is {not_dir} a directory! Expected a {file_dir} path.</source>
-        <translation>Настроенный путь к БД {db_type} не является директорией! Ожидался путь {file_dir}.</translation>
+        <translation>Настроенный путь к БД {db_type} не является директорией! Ожидался путь {file_dir}. {not_dir}</translation>
     </message>
     <message>
         <source>Steam DB metadata expired</source>
@@ -2363,12 +2397,12 @@ Select which missing dependencies to add to your active mods list.</source>
         <source>
 User-configured SteamDB database was queried. The following table displays mods available for download from Steam. 
 
-Rimworld mods on Steam Workshop that share a packageId are &quot;variants&quot;. Please keep this in mind before downloading. 
+Rimworld mods on Steam Workshop that share a packageId are "variants". Please keep this in mind before downloading. 
 
 Please select your preferred mod variant in the table below. You can also open each variant in Steam/Web browser to verify.</source>
         <translation>Была выполнена выборка настроенной базы данных SteamDB. В следующей таблице отображаются моды, доступные для загрузки из Steam.
 
-Моды Rimworld на Steam Workshop, которые имеют одинаковый packageId, являются &quot;вариантами&quot;. Пожалуйста, имейте это в виду перед загрузкой.
+Моды Rimworld на Steam Workshop, которые имеют одинаковый packageId, являются "вариантами". Пожалуйста, имейте это в виду перед загрузкой.
 
 Пожалуйста, выберите предпочитаемый вариант мода в таблице ниже. Вы также можете открыть каждый вариант в Steam/Web браузере для проверки.</translation>
     </message>
@@ -2436,32 +2470,16 @@ Please select your preferred mod variant in the table below. You can also open e
         <translation>Удалить мод и повторно подписаться через Steam</translation>
     </message>
     <message>
-        <source>Successfully deleted {count} selected mods.</source>
-        <translation>Успешно удалено {count} выбранных модов.</translation>
-    </message>
-    <message>
         <source>An OS error occurred while deleting the mod.</source>
         <translation>Произошла ошибка ОС при удалении мода.</translation>
-    </message>
-    <message>
-        <source>{error_msg} occurred at {filename} with error code {error_code}.</source>
-        <translation>{error_msg} произошла в {filename} с кодом ошибки {error_code}.</translation>
     </message>
     <message>
         <source>No mods selected</source>
         <translation>Не выбрано ни одного мода</translation>
     </message>
     <message>
-        <source>Please select at least one mod to delete.</source>
-        <translation>Пожалуйста, выберите хотя бы один мод для удаления.</translation>
-    </message>
-    <message>
         <source>Confirm Complete Deletion</source>
         <translation>Подтвердите полное удаление</translation>
-    </message>
-    <message>
-        <source>You have selected {count} mod(s) for complete deletion.</source>
-        <translation>Вы выбрали {count} мод(ов) для полного удаления.</translation>
     </message>
     <message>
         <source>
@@ -2482,10 +2500,6 @@ Do you want to proceed?</translation>
         <translation>Подтвердите удаление DDS</translation>
     </message>
     <message>
-        <source>You have selected {count} mod(s) for DDS texture deletion.</source>
-        <translation>Вы выбрали {count} мод(ов) для удаления текстур DDS.</translation>
-    </message>
-    <message>
         <source>
 This operation will only delete optimized textures (.dds files) from the selected mods.
 
@@ -2498,10 +2512,6 @@ Do you want to proceed?</translation>
     <message>
         <source>Confirm Selective Deletion</source>
         <translation>Подтвердите выборочное удаление</translation>
-    </message>
-    <message>
-        <source>You have selected {count} mod(s) for selective deletion.</source>
-        <translation>Вы выбрали {count} мод(ов) для выборочного удаления.</translation>
     </message>
     <message>
         <source>
@@ -2520,59 +2530,89 @@ Do you want to proceed?</source>
         <translation>Произошла ошибка при попытке {action} из модов Steam Workshop.</translation>
     </message>
     <message>
-        <source>Please select at least one mod to delete and {action}.</source>
-        <translation>Пожалуйста, выберите хотя бы один мод для удаления и {action}.</translation>
-    </message>
-    <message>
         <source>Deletion options</source>
         <translation>Опции удаления</translation>
     </message>
     <message>
         <source>Steam {action}</source>
-        <translation type="unfinished"></translation>
+        <translation>Steam {action}</translation>
     </message>
     <message>
         <source>Successfully initiated {action} from {len} Steam Workshop mod(s).
 The process may take a few moments to complete.</source>
-        <translation type="unfinished"></translation>
+        <translation>Успешно инициировал {action} из {len} steam Workshop Mod (s).
+Процесс может занять несколько минут.</translation>
     </message>
     <message>
         <source>{action} Error</source>
-        <translation type="unfinished"></translation>
+        <translation>{action} ошибка</translation>
     </message>
     <message>
-        <source>Confirm Deletion and {action}</source>
-        <translation type="unfinished"></translation>
+        <source>unsubscribe</source>
+        <translation>Отписаться</translation>
     </message>
     <message>
-        <source>You have selected {count} mod(s) for deletion.
-{steam_count} of these are Steam Workshop mods that will also be {action}.</source>
-        <translation type="unfinished"></translation>
+        <source>resubscribe</source>
+        <translation>повторно подписать</translation>
+    </message>
+    <message>
+        <source>unsubscribed</source>
+        <translation>отписан</translation>
+    </message>
+    <message>
+        <source>resubscribed</source>
+        <translation>повторно подписывается</translation>
+    </message>
+    <message>
+        <source>Successfully deleted {result.success_count} selected mods.</source>
+        <translation>Успешно удалил {result.success_count} Выбранные моды.</translation>
+    </message>
+    <message>
+        <source>Deletion Incomplete</source>
+        <translation>Удаление неполно</translation>
+    </message>
+    <message>
+        <source>Failed to delete {result.failed_count} mod(s). Check logs for details.</source>
+        <translation>Не удалось удалить {result.failed_count} mod (s).Проверьте журналы для деталей.</translation>
+    </message>
+    <message>
+        <source>{e.strerror or 'Unknown error'} occurred at {e.filename or mod_path} with error code {error_code}.</source>
+        <translation>произошла в  с кодом ошибки {error_code}. {e.filename or mod_path} {e.strerror or 'Unknown error'}</translation>
+    </message>
+    <message>
+        <source>You have selected {selected_count} mod(s) for complete deletion.</source>
+        <translation>Вы выбрали {selected_count} mod (ы) для полного удаления.</translation>
+    </message>
+    <message>
+        <source>You have selected {selected_count} mod(s) for DDS texture deletion.</source>
+        <translation>Вы выбрали {selected_count} mod (s) для удаления текстуры DDS.</translation>
+    </message>
+    <message>
+        <source>You have selected {selected_count} mod(s) for selective deletion.</source>
+        <translation>Вы выбрали {selected_count} mod (ы) для селективного удаления.</translation>
+    </message>
+    <message>
+        <source>Confirm Deletion and {action_capitalized}</source>
+        <translation>Подтвердите удаление и {action_capitalized}</translation>
+    </message>
+    <message>
+        <source>You have selected {selected_count} mod(s) for deletion.
+{steam_count} of these are Steam Workshop mods that will also be {action_past}.</source>
+        <translation>Вы выбрали {selected_count} mod (s) для удаления.
+{steam_count} из них - это моды Workshop Steam, которые также будут {action_past}.</translation>
     </message>
     <message>
         <source>
 This operation will:
 • Delete the selected mod directories from your filesystem
-• {action} Steam Workshop mods from your Steam account
+• {action_capitalized} Steam Workshop mods from your Steam account
 
 Do you want to proceed?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>unsubscribe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>resubscribe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>unsubscribed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>resubscribed</source>
-        <translation type="unfinished"></translation>
+        <translation>Эта операция будет:
+• Удалить выбранные каталоги мод из вашей файловой системы
+• {action_capitalized} Моды семинара Steam из вашей учетной записи Steam
+
+Вы хотите продолжить?</translation>
     </message>
 </context>
 <context>
@@ -2611,19 +2651,23 @@ Do you want to proceed?</source>
     </message>
     <message>
         <source>Folder Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Размер папки:</translation>
     </message>
     <message>
         <source>Last Touched:</source>
-        <translation type="unfinished"></translation>
+        <translation>Последний затронут:</translation>
     </message>
     <message>
         <source>Filesystem Modified:</source>
-        <translation type="unfinished"></translation>
+        <translation>Файлсистема изменена:</translation>
     </message>
     <message>
         <source>Workshop Times:</source>
-        <translation type="unfinished"></translation>
+        <translation>Время мастер -класса:</translation>
+    </message>
+    <message>
+        <source>Put your personal mod notes here!</source>
+        <translation>Поместите здесь свои личные модные заметки!</translation>
     </message>
 </context>
 <context>
@@ -2658,11 +2702,11 @@ Do you want to proceed?</source>
     </message>
     <message>
         <source>Not in latest save</source>
-        <translation type="unfinished"></translation>
+        <translation>Не в последнем сохранении</translation>
     </message>
     <message>
         <source>In latest save</source>
-        <translation type="unfinished"></translation>
+        <translation>В последнем сохранении</translation>
     </message>
 </context>
 <context>
@@ -2870,33 +2914,36 @@ Should be Loaded Before:</source>
     </message>
     <message>
         <source>Change mod color</source>
-        <translation type="unfinished"></translation>
+        <translation>Изменить цвет мода</translation>
     </message>
     <message>
         <source>Reset mod color</source>
-        <translation type="unfinished"></translation>
+        <translation>Сбросить цвет мода</translation>
     </message>
     <message>
         <source>
 Mod and Game Version Mismatch</source>
-        <translation type="unfinished"></translation>
+        <translation>Mod и игровая версия несоответствие</translation>
     </message>
     <message>
         <source>
 An alternative updated mod is recommended:
 {alternative}</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ModUpdaterPrompt</name>
-    <message>
-        <source>Update mods</source>
-        <translation>Обновить моды</translation>
+        <translation>Рекомендуется альтернативный обновленный мод:
+ {alternative}</translation>
     </message>
     <message>
-        <source>Update all</source>
-        <translation>Обновить все</translation>
+        <source>
+Alternative Dependencies:</source>
+        <translation>Альтернативные зависимости:</translation>
+    </message>
+    <message>
+        <source>Open folder in text editor</source>
+        <translation>Открыть папку в текстовом редакторе</translation>
+    </message>
+    <message>
+        <source>Open folder(s) in text editor</source>
+        <translation>Открыть папки в текстовом редакторе</translation>
     </message>
 </context>
 <context>
@@ -3022,8 +3069,8 @@ An alternative updated mod is recommended:
         <translation>Нажмите, чтобы показать только моды с ошибками</translation>
     </message>
     <message>
-        <source>Check &quot;Use This Instead&quot; Database</source>
-        <translation>Проверьте базу данных &quot;Используйте это вместо&quot;</translation>
+        <source>Check "Use This Instead" Database</source>
+        <translation>Проверьте базу данных "Используйте это вместо"</translation>
     </message>
     <message>
         <source>Check Dependencies</source>
@@ -3051,19 +3098,326 @@ An alternative updated mod is recommended:
     </message>
     <message>
         <source>Sort inactive mods by</source>
-        <translation type="unfinished"></translation>
+        <translation>Сортировать неактивные моды</translation>
     </message>
     <message>
         <source>0 new</source>
-        <translation type="unfinished"></translation>
+        <translation>0 Новое</translation>
     </message>
     <message>
         <source>Click to only show active mods not in latest save</source>
-        <translation type="unfinished"></translation>
+        <translation>Нажмите, чтобы показать только активные моды, не в последнем сохранении</translation>
     </message>
     <message>
         <source>{padding}{count} new</source>
-        <translation type="unfinished"></translation>
+        <translation>{padding} {count} новый</translation>
+    </message>
+</context>
+<context>
+    <name>PlayerLogTab</name>
+    <message>
+        <source>File Info</source>
+        <translation>Информация о файле</translation>
+    </message>
+    <message>
+        <source>Path:</source>
+        <translation>Путь:</translation>
+    </message>
+    <message>
+        <source>Size:</source>
+        <translation>Размер:</translation>
+    </message>
+    <message>
+        <source>Modified:</source>
+        <translation>Модифицировано:</translation>
+    </message>
+    <message>
+        <source>Statistics</source>
+        <translation>Статистика</translation>
+    </message>
+    <message>
+        <source>Total Lines: {total_lines}</source>
+        <translation>Общие строки: {total_lines}</translation>
+    </message>
+    <message>
+        <source>Infos: {infos}</source>
+        <translation>Infos:  {infos}</translation>
+    </message>
+    <message>
+        <source>Keybinds: {keybinds}</source>
+        <translation>Keybinds:  {keybinds}</translation>
+    </message>
+    <message>
+        <source>Mod Issues: {mod_issues}</source>
+        <translation>Проблемы с модом: {mod_issues}</translation>
+    </message>
+    <message>
+        <source>Warnings: {warnings}</source>
+        <translation>Предупреждения:  {warnings}</translation>
+    </message>
+    <message>
+        <source>Errors: {errors}</source>
+        <translation>Ошибки:  {errors}</translation>
+    </message>
+    <message>
+        <source>Exceptions: {exceptions}</source>
+        <translation>Исключения:  {exceptions}</translation>
+    </message>
+    <message>
+        <source>All Issues: {all_issues}</source>
+        <translation>Все проблемы: {all_issues}</translation>
+    </message>
+    <message>
+        <source>Auto Load Game Log on Startup</source>
+        <translation>Автопожавка</translation>
+    </message>
+    <message>
+        <source>If checked, the Game log will be loaded automatically on startup.</source>
+        <translation>При проверке журнал игры будет загружен автоматически при запуске.</translation>
+    </message>
+    <message>
+        <source>Enable Real-Time Log Monitoring</source>
+        <translation>Включить мониторинг журнала в реальном времени</translation>
+    </message>
+    <message>
+        <source>Enable real-time monitoring of Player.log file changes.</source>
+        <translation>Включить мониторинг изменений файла Player.log в реальном времени.</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation>Обновлять</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation>Экспорт</translation>
+    </message>
+    <message>
+        <source>Clear Log Display</source>
+        <translation>Очистить дисплей журнала</translation>
+    </message>
+    <message>
+        <source>Load Game Log</source>
+        <translation>Загрузите журнал игры</translation>
+    </message>
+    <message>
+        <source>Loads the game's Player.log file.</source>
+        <translation>Загружает файл игры Player.log.</translation>
+    </message>
+    <message>
+        <source>Load Log from File</source>
+        <translation>Загрузить журнал из файла</translation>
+    </message>
+    <message>
+        <source>Open a file dialog to select a log file</source>
+        <translation>Откройте диалог файла, чтобы выбрать файл журнала</translation>
+    </message>
+    <message>
+        <source>Load Log from Link</source>
+        <translation>Загрузить журнал по ссылке</translation>
+    </message>
+    <message>
+        <source>Load log content from a URL</source>
+        <translation>Загрузите содержимое журнала с URL</translation>
+    </message>
+    <message>
+        <source>Search and Filter</source>
+        <translation>Поиск и фильтр</translation>
+    </message>
+    <message>
+        <source>Search log entries...</source>
+        <translation>Записи журнала поиска ...</translation>
+    </message>
+    <message>
+        <source>All Entries</source>
+        <translation>Все записи</translation>
+    </message>
+    <message>
+        <source>Infos Only</source>
+        <translation>Только Infos</translation>
+    </message>
+    <message>
+        <source>Keybinds Only</source>
+        <translation>Только для ключей</translation>
+    </message>
+    <message>
+        <source>Mod Issues</source>
+        <translation>Мод проблемы</translation>
+    </message>
+    <message>
+        <source>Warnings Only</source>
+        <translation>Только предупреждения</translation>
+    </message>
+    <message>
+        <source>Errors Only</source>
+        <translation>Только ошибки</translation>
+    </message>
+    <message>
+        <source>Exceptions Only</source>
+        <translation>Только исключения</translation>
+    </message>
+    <message>
+        <source>All Issues</source>
+        <translation>Все проблемы</translation>
+    </message>
+    <message>
+        <source>Filter by mod name...</source>
+        <translation>Фильтр по имени мода ...</translation>
+    </message>
+    <message>
+        <source>Highlight Color</source>
+        <translation>Выделите цвет</translation>
+    </message>
+    <message>
+        <source>Pick color for search and navigation highlighting</source>
+        <translation>Выберите цвет для поиска и навигации.</translation>
+    </message>
+    <message>
+        <source>Previous</source>
+        <translation>Предыдущий</translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation>Следующий</translation>
+    </message>
+    <message>
+        <source>Quick Navigation</source>
+        <translation>Быстрая навигация</translation>
+    </message>
+    <message>
+        <source>Scroll to End</source>
+        <translation>Прокрутите, чтобы закончить</translation>
+    </message>
+    <message>
+        <source>Scroll to the end of the log display</source>
+        <translation>Прокрутите до конца дисплея журнала</translation>
+    </message>
+    <message>
+        <source>Path: Loaded from URL: {url}</source>
+        <translation>Путь: загружен с URL: {url}</translation>
+    </message>
+    <message>
+        <source>Path: Loaded from URL</source>
+        <translation>Путь: загружен с URL</translation>
+    </message>
+    <message>
+        <source>Size: {size:,} bytes</source>
+        <translation>Размер:  байты {size:,}</translation>
+    </message>
+    <message>
+        <source>Modified: N/A</source>
+        <translation>Модифицирован: N/A.</translation>
+    </message>
+    <message>
+        <source>Path: N/A</source>
+        <translation>Путь: n/a</translation>
+    </message>
+    <message>
+        <source>Size: N/A</source>
+        <translation>Размер: n/a</translation>
+    </message>
+    <message>
+        <source>Player log file not found.</source>
+        <translation>Файл журнала игрока не найден.</translation>
+    </message>
+    <message>
+        <source>Enter URL:</source>
+        <translation>Введите URL:</translation>
+    </message>
+    <message>
+        <source>Log loaded successfully from URL</source>
+        <translation>Журнал успешно загружен с URL</translation>
+    </message>
+    <message>
+        <source>Failed to load log from URL</source>
+        <translation>Не удалось загрузить журнал с URL</translation>
+    </message>
+    <message>
+        <source>Failed due to error: {error}</source>
+        <translation>Не удалось из -за ошибки:  {error}</translation>
+    </message>
+    <message>
+        <source>Path: {path_str}</source>
+        <translation>Путь: {path_str}</translation>
+    </message>
+    <message>
+        <source>Size: {size_str}</source>
+        <translation>Размер: {size_str}</translation>
+    </message>
+    <message>
+        <source>Modified: {modified_str}</source>
+        <translation>Modified: {modified_str}</translation>
+    </message>
+    <message>
+        <source>Info</source>
+        <translation>Информация</translation>
+    </message>
+    <message>
+        <source>Keybind</source>
+        <translation>Ключевой связки</translation>
+    </message>
+    <message>
+        <source>Mod_issue</source>
+        <translation>Mod_issue</translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation>Предупреждение</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Ошибка</translation>
+    </message>
+    <message>
+        <source>Exception</source>
+        <translation>Исключение</translation>
+    </message>
+    <message>
+        <source>Jump to previous {lower} entry</source>
+        <translation>Прыгайте к предыдущему  запись {lower}</translation>
+    </message>
+    <message>
+        <source>Jump to next {lower} entry</source>
+        <translation>Прыгайте в следующую  запись {lower}</translation>
+    </message>
+    <message>
+        <source>Total Lines: 0</source>
+        <translation>Общие строки: 0</translation>
+    </message>
+    <message>
+        <source>Infos: 0</source>
+        <translation>Infos: 0</translation>
+    </message>
+    <message>
+        <source>Keybinds: 0</source>
+        <translation>Ключевые связки: 0</translation>
+    </message>
+    <message>
+        <source>Mod Issues: 0</source>
+        <translation>Проблемы с модом: 0</translation>
+    </message>
+    <message>
+        <source>Warnings: 0</source>
+        <translation>Предупреждения: 0</translation>
+    </message>
+    <message>
+        <source>Errors: 0</source>
+        <translation>Ошибки: 0</translation>
+    </message>
+    <message>
+        <source>Exceptions: 0</source>
+        <translation>Исключения: 0</translation>
+    </message>
+    <message>
+        <source>All Issues: 0</source>
+        <translation>Все проблемы: 0</translation>
+    </message>
+    <message>
+        <source>Controls</source>
+        <translation>Управление</translation>
+    </message>
+    <message>
+        <source>Pick Highlight Color</source>
+        <translation>Выберите выделение цвета</translation>
     </message>
 </context>
 <context>
@@ -3227,8 +3581,8 @@ An alternative updated mod is recommended:
                       Это полезно как для ваших собственных записей, так и для других.</translation>
     </message>
     <message>
-        <source>Rules from mods&apos;s About.xml cannot be modified. Only &apos;Community Rules&apos; and &apos;User Rules&apos; are allowed.</source>
-        <translation>Правила из About.xml модов не могут быть изменены. Разрешены только &apos;Правила сообщества&apos; и &apos;Правила пользователя&apos;.</translation>
+        <source>Rules from mods's About.xml cannot be modified. Only 'Community Rules' and 'User Rules' are allowed.</source>
+        <translation>Правила из About.xml модов не могут быть изменены. Разрешены только 'Правила сообщества' и 'Правила пользователя'.</translation>
     </message>
     <message>
         <source>Rules can be Modified.</source>
@@ -3280,19 +3634,19 @@ An alternative updated mod is recommended:
     </message>
     <message>
         <source>About.xml (incompatibilitiesWith)</source>
-        <translation type="unfinished"></translation>
+        <translation>О.xml (несовместимости в сфере)</translation>
     </message>
     <message>
         <source>Community Rules (incompatibilitiesWith)</source>
-        <translation type="unfinished"></translation>
+        <translation>Правила сообщества (несовместимость с)</translation>
     </message>
     <message>
         <source>User Rules (incompatibilitiesWith)</source>
-        <translation type="unfinished"></translation>
+        <translation>Пользовательские правила (несовместимости с)</translation>
     </message>
     <message>
         <source>Force load at top of list</source>
-        <translation type="unfinished"></translation>
+        <translation>Принудительная загрузка в верхней части списка</translation>
     </message>
 </context>
 <context>
@@ -3328,10 +3682,10 @@ An alternative updated mod is recommended:
     <message>
         <source>SteamCMD failed to download mod(s)! Would you like to retry download of the mods that failed?
 
-Click &apos;Show Details&apos; to see a list of mods that failed.</source>
+Click 'Show Details' to see a list of mods that failed.</source>
         <translation>SteamCMD не удалось загрузить мод(ы)! Хотите ли вы повторить загрузку модов, которые не удалось загрузить?
 
-Нажмите &apos;Показать детали&apos;, чтобы увидеть список модов, которые не удалось загрузить.</translation>
+Нажмите 'Показать детали', чтобы увидеть список модов, которые не удалось загрузить.</translation>
     </message>
     <message>
         <source>Process Complete</source>
@@ -3348,6 +3702,14 @@ Click &apos;Show Details&apos; to see a list of mods that failed.</source>
     <message>
         <source>Ok</source>
         <translation>ОК</translation>
+    </message>
+    <message>
+        <source>SteamCMD Downloader Login error</source>
+        <translation>Ошибка входа в систему загрузки SteamCmd</translation>
+    </message>
+    <message>
+        <source>SteamCMD reported a login error. Please ensure you are connected to internet and steamcmd is not blocked by your firewall.</source>
+        <translation>SteamCmd сообщил об ошибке входа в систему.Пожалуйста, убедитесь, что вы подключены к Интернету, а SteamCMD не заблокирован вашим брандмауэром.</translation>
     </message>
 </context>
 <context>
@@ -3370,6 +3732,22 @@ Click &apos;Show Details&apos; to see a list of mods that failed.</source>
     <message>
         <source>Are you sure you want to reset all settings to their default values?</source>
         <translation>Вы уверены, что хотите сбросить все настройки к значениям по умолчанию?</translation>
+    </message>
+    <message>
+        <source>Invalid Game Location</source>
+        <translation>Неверное местоположение игры</translation>
+    </message>
+    <message>
+        <source>The selected game folder does not contain a valid RimWorld executable. Please select a valid game location.</source>
+        <translation>Выбранная папка с игрой не содержит допустимого исполняемого файла RimWorld.Пожалуйста, выберите допустимую локацию для игры.</translation>
+    </message>
+    <message>
+        <source>Invalid Config Folder</source>
+        <translation>Неверная папка конфигурации</translation>
+    </message>
+    <message>
+        <source>The selected config folder does not contain ModsConfig.xml. Please select a valid config folder.</source>
+        <translation>Выбранная папка конфигурации не содержит ModsConfig.xml.Пожалуйста, выберите допустимую папку конфигурации.</translation>
     </message>
     <message>
         <source>Clear all locations</source>
@@ -3455,6 +3833,34 @@ Click &apos;Show Details&apos; to see a list of mods that failed.</source>
         <translation>Базы данных</translation>
     </message>
     <message>
+        <source>Backup Settings</source>
+        <translation>&lt;coroutine object Translator.translate at 0x00000229036F2140&gt;</translation>
+    </message>
+    <message>
+        <source>Automatically backup saves on first daily launch</source>
+        <translation>&lt;coroutine object Translator.translate at 0x0000022903B5D9C0&gt;</translation>
+    </message>
+    <message>
+        <source>If enabled, RimSort will automatically backup saves on the first daily launch.</source>
+        <translation>&lt;coroutine object Translator.translate at 0x0000022903B5F7C0&gt;</translation>
+    </message>
+    <message>
+        <source>Number of backups to keep:</source>
+        <translation>&lt;coroutine object Translator.translate at 0x0000022903B5DCC0&gt;</translation>
+    </message>
+    <message>
+        <source>The number of backups to keep. Set to -1 to keep all backups, 0 to delete all.</source>
+        <translation>&lt;coroutine object Translator.translate at 0x0000022903B5DB40&gt;</translation>
+    </message>
+    <message>
+        <source>Number of saves to compress:</source>
+        <translation>&lt;coroutine object Translator.translate at 0x00000229036F2140&gt;</translation>
+    </message>
+    <message>
+        <source>The number of recent saves to include in the backup. Set to -1 to compress all saves, 0 to compress none.</source>
+        <translation>&lt;coroutine object Translator.translate at 0x0000022903B5DCC0&gt;</translation>
+    </message>
+    <message>
         <source>None</source>
         <translation>Нет</translation>
     </message>
@@ -3491,20 +3897,16 @@ Click &apos;Show Details&apos; to see a list of mods that failed.</source>
         <translation>База данных Steam Workshop</translation>
     </message>
     <message>
-        <source>&quot;No Version Warning&quot; Database</source>
-        <translation>База данных &quot;Нет предупреждения о версии&quot;</translation>
+        <source>"No Version Warning" Database</source>
+        <translation>База данных "Нет предупреждения о версии"</translation>
     </message>
     <message>
-        <source>&quot;Use This Instead&quot; Database</source>
-        <translation>База данных &quot;Используйте это вместо&quot;</translation>
+        <source>"Use This Instead" Database</source>
+        <translation>База данных "Используйте это вместо"</translation>
     </message>
     <message>
         <source>Sorting</source>
         <translation>Сортировка</translation>
-    </message>
-    <message>
-        <source>Sort mods</source>
-        <translation>Сортировать моды</translation>
     </message>
     <message>
         <source>Alphabetically</source>
@@ -3523,12 +3925,51 @@ Click &apos;Show Details&apos; to see a list of mods that failed.</source>
         <translation>Если включено, также использует moddependencies как loadTheseBefore, и моды будут отсортированы так, чтобы зависимости загружались перед зависимым модом.</translation>
     </message>
     <message>
-        <source>Sort Dependencies</source>
-        <translation>Сортировать зависимости</translation>
-    </message>
-    <message>
         <source>Prompt user to download dependencies when click in Sort</source>
         <translation>Запрашивать у пользователя загрузку зависимостей при нажатии на Сортировать</translation>
+    </message>
+    <message>
+        <source>When enabled, *ByVersion tags take precedence over the base tags, 
+If a matching version tag exists but is empty, the base tag is ignored. 
+e.g.(modDependenciesByVersion, loadAfterByVersion, loadBeforeByVersion, incompatibleWithByVersion, descriptionsByVersion)</source>
+        <translation>&lt;coroutine object Translator.translate at 0x0000022903B5F7C0&gt;</translation>
+    </message>
+    <message>
+        <source>Mod list options</source>
+        <translation>&lt;coroutine object Translator.translate at 0x0000022903B5DB40&gt;</translation>
+    </message>
+    <message>
+        <source>Notifies to download mods that may be missing in the active modlist</source>
+        <translation>&lt;coroutine object Translator.translate at 0x00000229036F2140&gt;</translation>
+    </message>
+    <message>
+        <source>Notifies and displays the mods that have the same packageid</source>
+        <translation>&lt;coroutine object Translator.translate at 0x0000022903B5F7C0&gt;</translation>
+    </message>
+    <message>
+        <source>Add icons and filtering options for easy mods identification and grouping</source>
+        <translation>&lt;coroutine object Translator.translate at 0x0000022903B5DCC0&gt;</translation>
+    </message>
+    <message>
+        <source>Hides invalid mods, not recommended to enable</source>
+        <translation>&lt;coroutine object Translator.translate at 0x0000022903B5DB40&gt;</translation>
+    </message>
+    <message>
+        <source>Inactive Mods Sorting</source>
+        <translation>&lt;coroutine object Translator.translate at 0x0000022903B5D9C0&gt;</translation>
+    </message>
+    <message>
+        <source>Enable inactive mods sorting</source>
+        <translation>&lt;coroutine object Translator.translate at 0x00000229036F2140&gt;</translation>
+    </message>
+    <message>
+        <source>Additional options like name, author, folder size, modified date will be available in the mods panel for sorting inactive mods 
+Disabling this can improve performance by avoiding heavy calculations.</source>
+        <translation>&lt;coroutine object Translator.translate at 0x0000022903B5DCC0&gt;</translation>
+    </message>
+    <message>
+        <source>Save inactive mods sort state</source>
+        <translation>&lt;coroutine object Translator.translate at 0x0000022903B5D9C0&gt;</translation>
     </message>
     <message>
         <source>DB Builder</source>
@@ -3543,7 +3984,7 @@ Click &apos;Show Details&apos; to see a list of mods that failed.</source>
         <translation>Получить PublishedFileIDs из локально установленных модов.</translation>
     </message>
     <message>
-        <source>Mods you wish to update must be installed, as the initial DB is built including data from mods&apos; About.xml files.</source>
+        <source>Mods you wish to update must be installed, as the initial DB is built including data from mods' About.xml files.</source>
         <translation>Моды, которые вы хотите обновить, должны быть установлены, так как начальная база данных создается с учетом данных из файлов About.xml модов.</translation>
     </message>
     <message>
@@ -3551,7 +3992,7 @@ Click &apos;Show Details&apos; to see a list of mods that failed.</source>
         <translation>Получить PublishedFileIDs из Steam Workshop.</translation>
     </message>
     <message>
-        <source>Mods to be updated don&apos;t have to be installed, as the initial DB is built by scraping the Steam Workshop.</source>
+        <source>Mods to be updated don't have to be installed, as the initial DB is built by scraping the Steam Workshop.</source>
         <translation>Моды, которые нужно обновить, не обязательно должны быть установлены, так как начальная база данных создается путем сканирования Steam Workshop.</translation>
     </message>
     <message>
@@ -3675,22 +4116,22 @@ This may potentially prevent some issues with downloading mods such as download 
     <message>
         <source>To add your own theme / stylesheet 
 
-1) Create a new-folder in &apos;themes&apos; folder in your &apos;RimSort&apos; config folder 
-2) Using the default &apos;RimPy&apos; theme copy it to the folder you created 
-3) Edit the copied &apos;style.qss&apos; as per your imagination 
-4) Start &apos;RimSort&apos; and select your theme from dropdown 
-5) Click &apos;ok&apos; to save settings and apply the selected theme 
+1) Create a new-folder in 'themes' folder in your 'RimSort' config folder 
+2) Using the default 'RimPy' theme copy it to the folder you created 
+3) Edit the copied 'style.qss' as per your imagination 
+4) Start 'RimSort' and select your theme from dropdown 
+5) Click 'ok' to save settings and apply the selected theme 
 
 NOTE 
 Name of folder will be used as name of the theme and any invalid theme will be ignored 
 </source>
         <translation> Чтобы добавить свою собственную тему / таблицу стилей
 
-1) Создайте новую папку в папке &apos;themes&apos; в вашей конфигурационной папке &apos;RimSort&apos;
-2) Скопируйте тему по умолчанию &apos;RimPy&apos; в папку, которую вы создали
-3) Отредактируйте скопированный файл &apos;style.qss&apos; по своему усмотрению
-4) Запустите &apos;RimSort&apos; и выберите свою тему из выпадающего списка
-5) Нажмите &apos;ОК&apos;, чтобы сохранить настройки и применить выбранную тему
+1) Создайте новую папку в папке 'themes' в вашей конфигурационной папке 'RimSort'
+2) Скопируйте тему по умолчанию 'RimPy' в папку, которую вы создали
+3) Отредактируйте скопированный файл 'style.qss' по своему усмотрению
+4) Запустите 'RimSort' и выберите свою тему из выпадающего списка
+5) Нажмите 'ОК', чтобы сохранить настройки и применить выбранную тему
 
 ПРИМЕЧАНИЕ
 Имя папки будет использоваться как имя темы, и любая недействительная тема будет игнорироваться
@@ -3828,23 +4269,23 @@ Name of folder will be used as name of the theme and any invalid theme will be i
     </message>
     <message>
         <source>Should be like: C:\Program Files (x86)\Steam\steamapps\common\RimWorld</source>
-        <translation type="unfinished"></translation>
+        <translation>Должно быть похоже на: C: \ Program Files (x86) \ Steam \ Steamapps \ common \ rimworld</translation>
     </message>
     <message>
         <source>Should be like: C:\Users\UserName\AppData\LocalLow\Ludeon Studios\RimWorld by Ludeon Studios\Config</source>
-        <translation type="unfinished"></translation>
+        <translation>Должно быть похоже на: c: \ users \ username \ appdata \ locallow \ ludeon studios \ rimworld от Ludeon Studios \ config</translation>
     </message>
     <message>
         <source>Only if you use steam should be like: C:\Program Files (x86)\Steam\steamapps\workshop\content\294100</source>
-        <translation type="unfinished"></translation>
+        <translation>Только если вы используете Steam, должны быть похожи на: C: \ Program Files (x86) \ Steam \ SteamApps \ Workshop \ Content \ 294100</translation>
     </message>
     <message>
         <source>should be like: C:\Program Files (x86)\Steam\steamapps\common\Rimworld\Mods</source>
-        <translation type="unfinished"></translation>
+        <translation>должно быть похоже на: C: \ Program Files (x86) \ Steam \ Steamapps \ common \ rimworld \ mods</translation>
     </message>
     <message>
         <source>Auxiliary Metadata DB deletion time limit in seconds. (Delete instantly 0, Never Delete -1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ограничение по времени удаления вспомогательных метаданных.(Удалить мгновенно 0, никогда не удаляйте -1)</translation>
     </message>
     <message>
         <source>To enable editing of this time limit, check the relevant checkbox in Advanced settings.
@@ -3852,88 +4293,175 @@ After a mod is deleted, this is the time we wait until this mod item is deleted 
 This Auxiliary DB contains info for mod colors, toggled warning, user notes etc. 
 This basically preserves your mod coloring, user notes etc. for this many seconds after deletion. 
 (This applies to deletion outside of RimSort too)</source>
-        <translation type="unfinished"></translation>
+        <translation>Чтобы включить редактирование этого ограничения, проверьте соответствующий флажок в расширенных настройках.
+После того, как мод будет удален, это время, когда мы ждем, пока этот элемент мода не будет удален из вспомогательной метаданной.
+Этот вспомогательный DB содержит информацию о цветах модов, переключении предупреждения, пользовательских примечаниях и т. Д.
+Это в основном сохраняет ваш мод раскраски, пользовательские примечания и т. Д. В течение столько секунд после удаления.
+(Это относится и к удалению за пределами rimsort)</translation>
     </message>
     <message>
         <source>Enable editing</source>
-        <translation type="unfinished"></translation>
+        <translation>Включить редактирование</translation>
     </message>
     <message>
         <source>This enables the editing of the time limit for Aux Metadata DB data deletion.</source>
-        <translation type="unfinished"></translation>
+        <translation>Это обеспечивает редактирование временного ограничения для удаления данных DB AUX.</translation>
     </message>
     <message>
         <source>Enable Auxiliary Metadata DB performance mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Включить вспомогательные метаданные режим производительности</translation>
     </message>
     <message>
         <source>This improves Auxiliary DB performance at the increased risk of data loss/corruption in the event of crashes.
 Improves performance by ~50%.</source>
-        <translation type="unfinished"></translation>
+        <translation>Это улучшает вспомогательную производительность БД при повышенном риске потери/коррупции данных в случае сбоев.
+Повышает производительность на ~ 50%.</translation>
     </message>
     <message>
         <source>Delete before update</source>
-        <translation type="unfinished"></translation>
+        <translation>Удалить перед обновлением</translation>
     </message>
     <message>
         <source>This is useful if you want to ensure clean mod updates.</source>
-        <translation type="unfinished"></translation>
+        <translation>Это полезно, если вы хотите обеспечить обновления чистых модов.</translation>
     </message>
     <message>
         <source>Launch State</source>
-        <translation type="unfinished"></translation>
+        <translation>Государство запуска</translation>
     </message>
     <message>
         <source>Min is {MIN_SIZE} and Max is {MAX_SIZE}. Values outside this range will be reset to defaults.</source>
-        <translation type="unfinished"></translation>
+        <translation>Min IS  и max is .Значения за пределами этого диапазона будут сброшены к по умолчанию. {MIN_SIZE} {MAX_SIZE}</translation>
     </message>
     <message>
         <source>Maximized</source>
-        <translation type="unfinished"></translation>
+        <translation>Максимизированный</translation>
     </message>
     <message>
         <source>Normal</source>
-        <translation type="unfinished"></translation>
+        <translation>Нормальный</translation>
     </message>
     <message>
         <source>Custom size</source>
-        <translation type="unfinished"></translation>
+        <translation>Пользовательский размер</translation>
     </message>
     <message>
         <source>Main Window Launch State</source>
-        <translation type="unfinished"></translation>
+        <translation>Состояние запуска главного окна</translation>
     </message>
     <message>
         <source>Browser Window Launch State</source>
-        <translation type="unfinished"></translation>
+        <translation>Состояние запуска окна браузера</translation>
     </message>
     <message>
         <source>Settings Window Launch State</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки окна</translation>
     </message>
     <message>
         <source>Custom Width:</source>
-        <translation type="unfinished"></translation>
+        <translation>Пользовательская ширина:</translation>
     </message>
     <message>
         <source>Custom Height:</source>
-        <translation type="unfinished"></translation>
+        <translation>Пользовательская высота:</translation>
     </message>
     <message>
         <source>Apply mod coloring to background instead of text</source>
-        <translation type="unfinished"></translation>
+        <translation>Применить раскраску мода на фон вместо текста</translation>
     </message>
     <message>
         <source>Auxiliary DB</source>
-        <translation type="unfinished"></translation>
+        <translation>Вспомогательный дБ</translation>
     </message>
     <message>
         <source>Integration with recent save</source>
-        <translation type="unfinished"></translation>
+        <translation>Интеграция с недавним спасением</translation>
     </message>
     <message>
         <source>Compare mod lists with the recent save file</source>
-        <translation type="unfinished"></translation>
+        <translation>Сравните списки мод с недавним файлом сохранения</translation>
+    </message>
+    <message>
+        <source>Clear also moves DLC</source>
+        <translation>Ясно также перемещает DLC</translation>
+    </message>
+    <message>
+        <source>Custom todds command</source>
+        <translation>Пользовательская команда TODDS</translation>
+    </message>
+    <message>
+        <source>If -p as in path is not specified, path from current active or all mods selection will be used.</source>
+        <translation>Если -p, как в пути, не указан, будет использоваться путь от активного тока или все моды.</translation>
+    </message>
+    <message>
+        <source>eg: {todds_example}</source>
+        <translation>Например: {todds_example}</translation>
+    </message>
+    <message>
+        <source>Automatically delete .dds files if no corresponding .png file exists</source>
+        <translation>Автоматически удалить файлы .dds, если нет соответствующего файла .png</translation>
+    </message>
+    <message>
+        <source>This will delete .dds files that are not paired with a .png file,
+
+This checks may take few seconds depending on the number of .dds files present.</source>
+        <translation>Это удалит файлы .dds, которые не связаны с файлом .png,
+
+Эти проверки могут занять несколько секунд в зависимости от количества присутствующих файлов .DDS.</translation>
+    </message>
+    <message>
+        <source>Prefer versioned About.xml tags over base tags</source>
+        <translation>Предпочитаю версию о тегах.</translation>
+    </message>
+    <message>
+        <source>External Tools</source>
+        <translation>Внешние инструменты</translation>
+    </message>
+    <message>
+        <source>Text Editor command location</source>
+        <translation>Место команды текстового редактора</translation>
+    </message>
+    <message>
+        <source>Additional Arguments (Opening Folders)</source>
+        <translation>Дополнительные аргументы (открывающие папки)</translation>
+    </message>
+    <message>
+        <source>Additional Arguments (Opening Single File)</source>
+        <translation>Дополнительные аргументы (открытие одного файла)</translation>
+    </message>
+    <message>
+        <source>Sorting Method</source>
+        <translation>Метод сортировки</translation>
+    </message>
+    <message>
+        <source>Dependencies Handling Behavior</source>
+        <translation>Зависимости обрабатывают поведение</translation>
+    </message>
+    <message>
+        <source>Use alternativePackageIds as satisfying dependencies</source>
+        <translation>Используйте AlternativePackageIds в качестве удовлетворяющих зависимостей</translation>
+    </message>
+    <message>
+        <source>If enabled, an alternativePackageIds entry in About.xml can satisfy a mod's dependency when the main dependency is missing. 
+E.g., 'oels.vehiclemapframework', alternatives: 'oels.vehiclemapframework.dev'</source>
+        <translation>Если включено, вход AlternativePackageids in About.xml может удовлетворить зависимость мода, когда основная зависимость отсутствует.
+Например, 'oels.vehiclemapframework', альтернативы: 'oels.vehiclemapframework.dev'</translation>
+    </message>
+    <message>
+        <source>XML Parsing Behavior</source>
+        <translation>XML -диапазон поведения</translation>
+    </message>
+    <message>
+        <source>Create backup before RimSort update</source>
+        <translation>Создать резервную копию перед обновлением Rimsort</translation>
+    </message>
+    <message>
+        <source>Recommended to keep this enabled as it creates a backup before updating RimSort, This helps prevent any unwanted changes or data getting deleted.</source>
+        <translation>Рекомендовано, чтобы это было включено, поскольку он создает резервную копию перед обновлением Rimsort, это помогает предотвратить любые нежелательные изменения или данные, которые будут удалены.</translation>
+    </message>
+    <message>
+        <source>Maximum number of backups to keep:</source>
+        <translation>Максимальное количество резервных копий, чтобы сохранить:</translation>
     </message>
 </context>
 <context>
@@ -4000,7 +4528,7 @@ Please choose one of the following options to proceed.</source>
         <translation>Как вы хотите добавить коллекцию?</translation>
     </message>
     <message>
-        <source>You can choose to add all mods from the collection or only the ones you don&apos;t have installed.</source>
+        <source>You can choose to add all mods from the collection or only the ones you don't have installed.</source>
         <translation>Вы можете выбрать, добавлять ли все моды из коллекции или только те, которые у вас не установлены.</translation>
     </message>
     <message>
@@ -4089,7 +4617,7 @@ New symlink:
 [{symlink_source_path}] -&gt; </translation>
     </message>
     <message>
-        <source>The symlink destination path already exists. Would you like to remove the existing destination and create a new symlink in it&apos;s place?</source>
+        <source>The symlink destination path already exists. Would you like to remove the existing destination and create a new symlink in it's place?</source>
         <translation>Путь назначения символической ссылки уже существует. Вы хотите удалить существующее назначение и создать новую символическую ссылку на его месте?</translation>
     </message>
     <message>
@@ -4118,11 +4646,11 @@ New symlink:
     </message>
     <message>
         <source>&amp;Yes</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Да</translation>
     </message>
     <message>
-        <source>&amp;Don&apos;t Ask Again</source>
-        <translation type="unfinished"></translation>
+        <source>&amp;Don't Ask Again</source>
+        <translation>Не спрашивай снова</translation>
     </message>
 </context>
 <context>
@@ -4132,8 +4660,8 @@ New symlink:
         <translation>Ошибка пути темы</translation>
     </message>
     <message>
-        <source>Stylesheet path does not exist for theme &apos;{theme_name}&apos; Resetting to default theme &apos;{default_theme}&apos;.</source>
-        <translation>Путь к таблице стилей не существует для темы &apos;{theme_name}&apos;. Сбрасываю на тему по умолчанию &apos;{default_theme}&apos;.</translation>
+        <source>Stylesheet path does not exist for theme '{theme_name}' Resetting to default theme '{default_theme}'.</source>
+        <translation>Путь к таблице стилей не существует для темы '{theme_name}'. Сбрасываю на тему по умолчанию '{default_theme}'.</translation>
     </message>
     <message>
         <source>Theme Error</source>
@@ -4142,6 +4670,17 @@ New symlink:
     <message>
         <source>Failed to apply theme: {selected_theme_name},Resetting to default theme: {self.default_theme}</source>
         <translation>Не удалось применить тему: {selected_theme_name}, сброс на тему по умолчанию: {self.default_theme}</translation>
+    </message>
+</context>
+<context>
+    <name>ToddsInterface</name>
+    <message>
+        <source>ERROR: todds was not found. If you are running from source, please ensure you have followed the correct steps in the {development_guide_url} 
+
+Please reach out to us for support at: {support_url}</source>
+        <translation>Ошибка: Тоддс не был найден.Если вы работаете из источника, убедитесь, что вы выполнили правильные шаги в {development_guide_url}
+
+Пожалуйста, обратитесь к нам за поддержкой по адресу: {support_url}</translation>
     </message>
 </context>
 <context>
@@ -4181,7 +4720,7 @@ Please manually verify/install the game through Steam.</source>
     <message>
         <source>Mods have been deleted. Please restart Steam to trigger automatic redownload of subscribed mods.
 
-If mods don&apos;t download automatically, try:
+If mods don't download automatically, try:
 1. Restart Steam
 2. Verify game files in Steam
 3. Visit the Workshop page of each mod</source>
@@ -4307,7 +4846,7 @@ Details: {e}</source>
         <translation>Кэш очищен</translation>
     </message>
     <message>
-        <source>Successfully deleted Steam&apos;s downloading folder.
+        <source>Successfully deleted Steam's downloading folder.
 Restart Steam for the changes to take effect.</source>
         <translation>Успешно удалена папка загрузки Steam.
 Перезапустите Steam, чтобы изменения вступили в силу.</translation>
@@ -4317,7 +4856,7 @@ Restart Steam for the changes to take effect.</source>
         <translation>Очистка кэша</translation>
     </message>
     <message>
-        <source>Steam&apos;s downloading folder is already empty.</source>
+        <source>Steam's downloading folder is already empty.</source>
         <translation>Папка загрузки Steam уже пуста.</translation>
     </message>
     <message>
@@ -4325,7 +4864,7 @@ Restart Steam for the changes to take effect.</source>
         <translation>Не удалось очистить кэш</translation>
     </message>
     <message>
-        <source>Could not delete Steam&apos;s downloading folder.
+        <source>Could not delete Steam's downloading folder.
 Please delete it manually: Steam/steamapps/downloading
 Details: {e}</source>
         <translation>Не удалось удалить папку загрузки Steam.
@@ -4338,7 +4877,7 @@ Details: {e}</source>
     </message>
     <message>
         <source>Could not open Steam to verify game files.
-Please verify game files manually through Steam&apos;s game properties.
+Please verify game files manually through Steam's game properties.
 Details: {e}</source>
         <translation>Не удалось открыть Steam для проверки файлов игры.
 Пожалуйста, проверьте файлы игры вручную через свойства игры в Steam.
@@ -4408,7 +4947,7 @@ Details: {e}</source>
     </message>
     <message>
         <source>Error: {e}</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка: {e}</translation>
     </message>
 </context>
 <context>
@@ -4418,7 +4957,7 @@ Details: {e}</source>
         <translation>Восстановление файлов игры</translation>
     </message>
     <message>
-        <source>If you&apos;re experiencing issues with your game, you can try the following recovery options. Steam will automatically redownload any deleted files on next launch.</source>
+        <source>If you're experiencing issues with your game, you can try the following recovery options. Steam will automatically redownload any deleted files on next launch.</source>
         <translation>Если у вас возникли проблемы с игрой, вы можете попробовать следующие варианты восстановления. Steam автоматически заново загрузит все удаленные файлы при следующем запуске.</translation>
     </message>
     <message>
@@ -4506,7 +5045,7 @@ Details: {e}</source>
         <translation>Утилиты Steam</translation>
     </message>
     <message>
-        <source>Delete Steam&apos;s downloading folder to fix download issues</source>
+        <source>Delete Steam's downloading folder to fix download issues</source>
         <translation>Удалить папку загрузки Steam, чтобы исправить проблемы с загрузкой</translation>
     </message>
     <message>
@@ -4519,43 +5058,84 @@ Details: {e}</source>
     </message>
     <message>
         <source>Warning: These operations will delete selected files permanently!</source>
-        <translation type="unfinished"></translation>
+        <translation>ПРЕДУПРЕЖДЕНИЕ: Эти операции будут удалять выбранные файлы навсегда!</translation>
     </message>
     <message>
         <source>Export List</source>
-        <translation type="unfinished"></translation>
+        <translation>Экспортный список</translation>
     </message>
     <message>
         <source>Import List</source>
-        <translation type="unfinished"></translation>
+        <translation>Список импорта</translation>
     </message>
     <message>
         <source>Reset to Vanilla</source>
-        <translation type="unfinished"></translation>
+        <translation>Сбросить в ваниль</translation>
     </message>
     <message>
         <source>This will delete all mods in your Mods folder and reset to vanilla state</source>
-        <translation type="unfinished"></translation>
+        <translation>Это удалит все моды в папке ваших модов и сброс в ванильное состояние</translation>
     </message>
     <message>
         <source>Clear All Mods</source>
-        <translation type="unfinished"></translation>
+        <translation>Очистить все моды</translation>
     </message>
     <message>
         <source>Steam-specific utilities to help resolve download and game file issues.</source>
-        <translation type="unfinished"></translation>
+        <translation>Steam-специфичные утилиты, чтобы помочь решить проблемы загрузки и файла игры.</translation>
     </message>
     <message>
         <source>Clear Download Cache</source>
-        <translation type="unfinished"></translation>
+        <translation>Очистить кеш -скачать</translation>
     </message>
     <message>
         <source>Verify Game Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Проверьте файлы игры</translation>
     </message>
     <message>
         <source>Repair Steam Library</source>
-        <translation type="unfinished"></translation>
+        <translation>Ремонтировать Steam Library</translation>
+    </message>
+</context>
+<context>
+    <name>UpdateManager</name>
+    <message>
+        <source>RimSort update found</source>
+        <translation>Обновление Rimsort найдено</translation>
+    </message>
+    <message>
+        <source>An update to RimSort has been released: {latest_tag_name}</source>
+        <translation>Было выпущено обновление для Rimsort:  {latest_tag_name}</translation>
+    </message>
+    <message>
+        <source>You are running RimSort {current_version}
+Do you want to update now?</source>
+        <translation>Вы используете rimsort {current_version}
+Вы хотите обновить сейчас?</translation>
+    </message>
+    <message>
+        <source>Downloading RimSort {tag_name} release...</source>
+        <translation>Загрузка rimsort  релиз ... {tag_name}</translation>
+    </message>
+    <message>
+        <source>Extracting update files...</source>
+        <translation>Извлечение файлов обновления ...</translation>
+    </message>
+    <message>
+        <source>Preparing update installer...</source>
+        <translation>Подготовка установщика обновления...</translation>
+    </message>
+    <message>
+        <source>Update downloaded</source>
+        <translation>Обновление скачано</translation>
+    </message>
+    <message>
+        <source>Do you want to proceed with the update?</source>
+        <translation>Вы хотите продолжить обновление?</translation>
+    </message>
+    <message>
+        <source>Creating backup...</source>
+        <translation>Создание резервной копии ...</translation>
     </message>
 </context>
 <context>
@@ -4569,46 +5149,8 @@ Details: {e}</source>
         <translation>Доступны замены для модов Workshop!</translation>
     </message>
     <message>
-        <source>
-The following table displays Workshop mods with suggested replacements according to the &quot;Use This Instead&quot; database</source>
-        <translation>
-Следующая таблица отображает моды Workshop с предложенными заменами согласно базе данных &quot;Используйте это вместо&quot;</translation>
-    </message>
-    <message>
-        <source>Original Mod Name</source>
-        <translation>Имя оригинального мода</translation>
-    </message>
-    <message>
-        <source>Original Author</source>
-        <translation>Оригинальный автор</translation>
-    </message>
-    <message>
-        <source>Original Workshop Page</source>
-        <translation>Оригинальная страница Workshop</translation>
-    </message>
-    <message>
-        <source>Replacement Mod Name</source>
-        <translation>Имя заменяющего мода</translation>
-    </message>
-    <message>
-        <source>Replacement Author</source>
-        <translation>Автор заменяющего мода</translation>
-    </message>
-    <message>
-        <source>Replacement Workshop Page</source>
-        <translation>Страница Workshop заменяющего мода</translation>
-    </message>
-    <message>
-        <source>Download with SteamCMD</source>
-        <translation>Скачать с помощью SteamCMD</translation>
-    </message>
-    <message>
         <source>Subscribe</source>
         <translation>Подписаться</translation>
-    </message>
-    <message>
-        <source>Subscribe replacements</source>
-        <translation>Подписаться на замены</translation>
     </message>
     <message>
         <source>Subscribe all replacements</source>
@@ -4619,24 +5161,84 @@ The following table displays Workshop mods with suggested replacements according
         <translation>Отписаться</translation>
     </message>
     <message>
-        <source>Unsubscribe outdated</source>
-        <translation>Отписаться от устаревших</translation>
-    </message>
-    <message>
-        <source>Unsubscribe all outdated</source>
-        <translation>Отписаться от всех устаревших</translation>
-    </message>
-    <message>
         <source>Refresh</source>
         <translation>Обновить</translation>
     </message>
     <message>
-        <source>Refresh Mod List</source>
-        <translation>Обновить список модов</translation>
+        <source>Mod Name</source>
+        <translation>Имя мода</translation>
     </message>
     <message>
-        <source>Refresh Table</source>
-        <translation>Обновить таблицу</translation>
+        <source>Author</source>
+        <translation>Автор</translation>
+    </message>
+    <message>
+        <source>Package ID</source>
+        <translation>Идентификатор пакета</translation>
+    </message>
+    <message>
+        <source>PublishedFileId</source>
+        <translation>Опубликованныйфилеид</translation>
+    </message>
+    <message>
+        <source>Supported Versions</source>
+        <translation>Поддерживаемые версии</translation>
+    </message>
+    <message>
+        <source>Source</source>
+        <translation>Источник</translation>
+    </message>
+    <message>
+        <source>Mod Downloaded</source>
+        <translation>Скачать мод</translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation>Путь</translation>
+    </message>
+    <message>
+        <source>Workshop Page</source>
+        <translation>Страница мастерской</translation>
+    </message>
+    <message>
+        <source>The following table displays Workshop mods with suggested replacements according to the "Use This Instead" database, grouped by replacement mod.</source>
+        <translation>В следующей таблице показаны моды Мастерской с предлагаемыми заменами в соответствии с базой данных «Используйте это вместо», сгруппированные по заменяющим модам.</translation>
+    </message>
+    <message>
+        <source>Select</source>
+        <translation>Выбирать</translation>
+    </message>
+    <message>
+        <source>Select all Originals</source>
+        <translation>Выбрать все оригиналы</translation>
+    </message>
+    <message>
+        <source>Select all Replacements</source>
+        <translation>Выбрать все замены</translation>
+    </message>
+    <message>
+        <source>SteamCMD</source>
+        <translation>SteamCMD</translation>
+    </message>
+    <message>
+        <source>Download selected with SteamCMD</source>
+        <translation>Загрузка выбрана с помощью SteamCMD</translation>
+    </message>
+    <message>
+        <source>Download all replacements with SteamCMD</source>
+        <translation>Загрузите все замены с помощью SteamCMD.</translation>
+    </message>
+    <message>
+        <source>Subscribe selected</source>
+        <translation>Подписаться выбрано</translation>
+    </message>
+    <message>
+        <source>Unsubscribe selected</source>
+        <translation>Отменить подписку выбрано</translation>
+    </message>
+    <message>
+        <source>Unsubscribe all originals</source>
+        <translation>Отписаться от всех оригиналов</translation>
     </message>
     <message>
         <source>Delete</source>
@@ -4651,16 +5253,64 @@ The following table displays Workshop mods with suggested replacements according
         <translation>Используйте это вместо</translation>
     </message>
     <message>
-        <source>Successfully subscribed to replacement mods</source>
-        <translation>Успешно подписались на заменяющие моды</translation>
-    </message>
-    <message>
-        <source>Successfully unsubscribed to original mods</source>
-        <translation>Успешно отписались от оригинальных модов</translation>
+        <source>Successfully {action}d {count} mods</source>
+        <translation>Успешно добавлено {action} модификаций: {count}.</translation>
     </message>
     <message>
         <source>Open Workshop Page</source>
         <translation>Открыть страницу Workshop</translation>
+    </message>
+</context>
+<context>
+    <name>WorkshopModUpdaterPanel</name>
+    <message>
+        <source>RimSort - Updates found for Workshop mods</source>
+        <translation>RimSort — обнаружены обновления для модов Мастерской.</translation>
+    </message>
+    <message>
+        <source>There updates available for Workshop mods!</source>
+        <translation>Доступны обновления для модов Мастерской!</translation>
+    </message>
+    <message>
+        <source>
+The following table displays Workshop mods available for update from Steam.</source>
+        <translation>В следующей таблице показаны моды Мастерской, доступные для обновления из Steam.</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Имя</translation>
+    </message>
+    <message>
+        <source>PublishedFileID</source>
+        <translation>Опубликованныйфилеид</translation>
+    </message>
+    <message>
+        <source>Mod Source</source>
+        <translation>Источник мода</translation>
+    </message>
+    <message>
+        <source>Mod Downloaded</source>
+        <translation>Скачать мод</translation>
+    </message>
+    <message>
+        <source>Updated on Workshop</source>
+        <translation>Обновлено в Мастерской</translation>
+    </message>
+    <message>
+        <source>Workshop Page</source>
+        <translation>Страница мастерской</translation>
+    </message>
+    <message>
+        <source>Update Selected Mods</source>
+        <translation>Обновить выбранные моды</translation>
+    </message>
+    <message>
+        <source>Update All Mods</source>
+        <translation>Обновить все моды</translation>
+    </message>
+    <message>
+        <source>Open Workshop Page</source>
+        <translation>Открыть страницу мастерской</translation>
     </message>
 </context>
 <context>
@@ -4709,11 +5359,11 @@ The following table displays Workshop mods with suggested replacements according
     <name>check_if_pfids_blacklisted</name>
     <message>
         <source>Download blacklisted mods</source>
-        <translation type="unfinished"></translation>
+        <translation>Скачать моды с черным списком</translation>
     </message>
     <message>
         <source>Skip blacklisted mods</source>
-        <translation type="unfinished"></translation>
+        <translation>Пропустить моды с черным списком</translation>
     </message>
 </context>
 <context>
@@ -4741,18 +5391,6 @@ The following table displays Workshop mods with suggested replacements according
 <context>
     <name>launch_game_process</name>
     <message>
-        <source>File not found</source>
-        <translation>Файл не найден</translation>
-    </message>
-    <message>
-        <source>Unable to launch game process</source>
-        <translation>Не удалось запустить игровой процесс</translation>
-    </message>
-    <message>
-        <source>RimSort could not start RimWorld as the game executable does not exist at the specified path: {executable_path}. Please check that this directory is correct and the RimWorld game executable exists in it.</source>
-        <translation>RimSort не удалось запустить RimWorld, так как исполняемый файл игры не существует по указанному пути: {executable_path}. Пожалуйста, проверьте, что этот каталог правильный и исполняемый файл RimWorld существует в нем.</translation>
-    </message>
-    <message>
         <source>Game launch failed</source>
         <translation>Не удалось запустить игру</translation>
     </message>
@@ -4763,6 +5401,14 @@ The following table displays Workshop mods with suggested replacements according
     <message>
         <source>RimSort could not start RimWorld as the game folder is empty or invalid: [{game_install_path}] Please check that the game folder is properly set and that the RimWorld executable exists in it.</source>
         <translation>RimSort не удалось запустить RimWorld, так как папка игры пуста или недействительна: [{game_install_path}]. Пожалуйста, проверьте, что папка игры правильно настроена и что исполняемый файл RimWorld существует в ней.</translation>
+    </message>
+    <message>
+        <source>Invalid game folder</source>
+        <translation>Неверная папка с игрой</translation>
+    </message>
+    <message>
+        <source>RimSort could not validate the RimWorld executable in the specified folder: {game_install_path}. Please check that this directory is correct and contains a valid RimWorld game executable.</source>
+        <translation>RimSort не удалось проверить исполняемый файл RimWorld в указанной папке: {game_install_path}.Пожалуйста, убедитесь, что этот каталог правильный и содержит действительный исполняемый файл игры RimWorld.</translation>
     </message>
 </context>
 <context>

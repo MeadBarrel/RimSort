@@ -187,8 +187,8 @@ class BaseModsPanel(QWidget):
                 checkbox = self.editor_table_view.indexWidget(
                     self.editor_model.item(row, 0).index()
                 )
-                assert isinstance(checkbox, QCheckBox)
-                checkbox.setChecked(value)
+                if isinstance(checkbox, QCheckBox):
+                    checkbox.setChecked(value)
 
     def _row_count(self) -> int:
         return self.editor_model.rowCount()
@@ -245,8 +245,9 @@ class BaseModsPanel(QWidget):
     def clear_layout(self, layout: QLayout) -> None:
         while layout.count():
             child = layout.takeAt(0)
-            if child.widget():
-                child.widget().setParent(None)
+            widget = child.widget()
+            if widget is not None:
+                widget.setParent(None)
 
     def _row_is_checked(self, row: int) -> bool:
         checkbox = self.editor_table_view.indexWidget(

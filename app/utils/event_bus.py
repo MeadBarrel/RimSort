@@ -1,4 +1,5 @@
-from typing import Self
+from pathlib import Path
+from typing import Union
 
 from PySide6.QtCore import QObject, Signal
 from PySide6.QtWidgets import QPushButton
@@ -21,7 +22,7 @@ class EventBus(QObject):
         Since this is a singleton class, multiple instantiations will return the same object.
     """
 
-    _instance: None | Self = None
+    _instance: Union[None, "EventBus"] = None
 
     # Menu bar signals
     do_check_for_application_update = Signal()
@@ -78,9 +79,8 @@ class EventBus(QObject):
     do_download_no_version_warning_db_from_github = Signal()
     do_upload_use_this_instead_db_to_github = Signal()
     do_download_use_this_instead_db_from_github = Signal()
-    do_upload_rimsort_log = Signal()
-    do_upload_rimsort_old_log = Signal()
-    do_upload_rimworld_log = Signal()
+    do_upload_log = Signal(Path)
+    do_open_default_editor = Signal(Path)
     do_download_all_mods_via_steamcmd = Signal()
     do_download_all_mods_via_steam = Signal()
     do_compare_steam_workshop_databases = Signal()
@@ -126,6 +126,9 @@ class EventBus(QObject):
 
     # Performance settings signals
     enable_aux_db_performance_mode = Signal()
+
+    # Loading animation signals
+    do_threaded_loading_animation = Signal(str, object, str)
 
     def __new__(cls) -> "EventBus":
         """

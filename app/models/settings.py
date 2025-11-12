@@ -84,8 +84,30 @@ class Settings(QObject):
         self.sorting_algorithm: SortMethod = SortMethod.TOPOLOGICAL
         # Whether to use moddependencies as loadTheseBefore rules
         self.use_moddependencies_as_loadTheseBefore: bool = False
+        # Whether to use alternativePackageIds as satisfying dependencies
+        self.use_alternative_package_ids_as_satisfying_dependencies: bool = True
         # Whether to check for missing dependencies when sorting
         self.check_dependencies_on_sort: bool = True
+
+        # XML parsing behavior
+        # If enabled, About.xml *ByVersion tags take precedence over base tags
+        # e.g., modDependenciesByVersion, loadAfterByVersion, loadBeforeByVersion, incompatibleWithByVersion, descriptionsByVersion
+        self.prefer_versioned_about_tags: bool = True
+
+        # Whether to notify user about missing mods
+        self.try_download_missing_mods: bool = True
+        # Whether to notify user about duplicate mods
+        self.duplicate_mods_warning: bool = True
+        # Whether to enable Mod type filter
+        self.mod_type_filter: bool = True
+        # Whether to hide invalid mods
+        self.hide_invalid_mods_when_filtering: bool = False
+        # Whether to enable inactive mods sorting options
+        self.inactive_mods_sorting: bool = True
+        # Inactive mods sort state saving
+        self.save_inactive_mods_sort_state: bool = False
+        self.inactive_mods_sort_key: str = "FILESYSTEM_MODIFIED_TIME"
+        self.inactive_mods_sort_descending: bool = True
 
         # DB Builder
         self.db_builder_include: str = "all_mods"
@@ -104,6 +126,11 @@ class Settings(QObject):
         self.todds_dry_run: bool = False
         self.todds_overwrite: bool = False
         self.auto_delete_orphaned_dds: bool = False
+
+        # External Tools
+        self.text_editor_location: str = ""
+        self.text_editor_folder_arg: str = ""
+        self.text_editor_file_arg: str = ""
 
         # Theme
         self.enable_themes: bool = True
@@ -134,10 +161,13 @@ class Settings(QObject):
         # Advanced
         self.debug_logging_enabled: bool = False
         self.watchdog_toggle: bool = True
-        self.mod_type_filter_toggle: bool = True
-        self.hide_invalid_mods_when_filtering_toggle: bool = False
+
+        # Backups
+        self.backup_saves_on_launch: bool = False
+        self.last_backup_date: str = ""
+        self.auto_backup_retention_count: int = 10
+        self.auto_backup_compression_count: int = 10
         self.color_background_instead_of_text_toggle: bool = True
-        self.duplicate_mods_warning: bool = True
         self.steam_mods_update_check: bool = False
         # When enabled, if update checks find updates, download them silently without prompting
         self.auto_download_mod_updates_silently: bool = False
@@ -148,15 +178,10 @@ class Settings(QObject):
         self.show_save_comparison_indicators: bool = True
         # Clear button behavior
         self.clear_moves_dlc: bool = False
-        # Dependencies: treat alternativePackageIds as satisfying dependencies
-        self.consider_alternative_package_ids: bool = False
-        # Advanced filtering options
-        self.enable_advanced_filtering: bool = True
 
-        # XML parsing behavior
-        # If enabled, About.xml *ByVersion tags take precedence over base tags
-        # e.g., modDependenciesByVersion, loadAfterByVersion, loadBeforeByVersion, incompatibleWithByVersion, descriptionsByVersion
-        self.prefer_versioned_about_tags: bool = False
+        # Update backup settings
+        self.enable_backup_before_update: bool = True
+        self.max_backups: int = 3
 
         # Authentication
         self.rentry_auth_code: str = ""
@@ -185,6 +210,16 @@ class Settings(QObject):
             Path(AppInfo().app_storage_folder) / "instances" / self.current_instance
         )
         self.instances: dict[str, Instance] = {"Default": Instance()}
+
+        # Color Picker Custom Colors (Store as hex)
+        self.color_picker_custom_colors: list[str] = []
+
+    @property
+    def aux_db_path(self) -> Path:
+        """
+        Get the path to the auxiliary metadata database for the current instance.
+        """
+        return Path(self.current_instance_path) / "aux_metadata.db"
 
     def __setattr__(self, key: str, value: Any) -> None:
         # If private attribute, set it normally

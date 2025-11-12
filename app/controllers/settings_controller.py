@@ -14,7 +14,12 @@ from app.controllers.theme_controller import ThemeController
 from app.models.settings import Instance, Settings
 from app.utils.constants import SortMethod
 from app.utils.event_bus import EventBus
-from app.utils.generic import platform_specific_open
+from app.utils.generic import (
+    find_steam_rimworld,
+    get_path_up_to_string,
+    platform_specific_open,
+    validate_game_executable,
+)
 from app.utils.system_info import SystemInfo
 from app.views.dialogue import (
     BinaryChoiceDialog,
@@ -128,6 +133,11 @@ class SettingsController(QObject):
             )
         except Exception:
             pass
+
+        # Sorting: wiring for inactive mods sorting checkbox
+        self.settings_dialog.enable_inactive_mods_sorting_checkbox.toggled.connect(
+            self._on_enable_inactive_mods_sorting_checkbox_toggled
+        )
 
         # Locations tab
         self.settings_dialog.game_location.textChanged.connect(
@@ -307,6 +317,11 @@ class SettingsController(QObject):
             self._on_steamcmd_install_button_clicked
         )
 
+        # Other External Tools Tab
+        self.settings_dialog.text_editor_location_choose_button.clicked.connect(
+            self._on_text_editor_location_choose_button_clicked
+        )
+
         # Theme tab
         self.settings_dialog.theme_location_open_button.clicked.connect(
             self._on_theme_location_open_button_clicked
@@ -336,6 +351,9 @@ class SettingsController(QObject):
             self.settings.load()
         except JSONDecodeError:
             logger.error("Unable to parse settings file")
+            show_settings_error()
+        except Exception as e:
+            logger.error(f"Failed to load settings: {e}")
             show_settings_error()
 
     def get_mod_paths(self) -> list[str]:
@@ -409,6 +427,13 @@ class SettingsController(QObject):
         self.settings.show_save_comparison_indicators = checked
         self.settings.save()
 
+    @Slot(bool)
+    def _on_enable_inactive_mods_sorting_checkbox_toggled(self, checked: bool) -> None:
+        """
+        Enable or disable the inactive mods sorting group box based on the checkbox state.
+        """
+        self.settings_dialog.inactive_mods_sorting_group_box.setEnabled(checked)
+
     def create_instance(
         self,
         instance_name: str,
@@ -462,7 +487,6 @@ class SettingsController(QObject):
         self.settings_dialog.game_location_open_button.setEnabled(
             self.settings_dialog.game_location.text() != ""
         )
-
         self.settings_dialog.config_folder_location.setText(
             str(self.settings.instances[self.settings.current_instance].config_folder)
         )
@@ -470,7 +494,6 @@ class SettingsController(QObject):
         self.settings_dialog.config_folder_location_open_button.setEnabled(
             self.settings_dialog.config_folder_location.text() != ""
         )
-
         self.settings_dialog.steam_mods_folder_location.setText(
             str(self.settings.instances[self.settings.current_instance].workshop_folder)
         )
@@ -478,7 +501,6 @@ class SettingsController(QObject):
         self.settings_dialog.steam_mods_folder_location_open_button.setEnabled(
             self.settings_dialog.steam_mods_folder_location.text() != ""
         )
-
         self.settings_dialog.local_mods_folder_location.setText(
             str(self.settings.instances[self.settings.current_instance].local_folder)
         )
@@ -486,6 +508,19 @@ class SettingsController(QObject):
         self.settings_dialog.local_mods_folder_location_open_button.setEnabled(
             self.settings_dialog.local_mods_folder_location.text() != ""
         )
+        self.settings_dialog.steam_client_integration_checkbox.setChecked(
+            self.settings.instances[
+                self.settings.current_instance
+            ].steam_client_integration
+        )
+        # Enable/disable Steam mods location fields based on checkbox state
+        checked = self.settings_dialog.steam_client_integration_checkbox.isChecked()
+        self.settings_dialog.steam_mods_folder_location.setEnabled(checked)
+        self.settings_dialog.steam_mods_folder_location_open_button.setEnabled(checked)
+        self.settings_dialog.steam_mods_folder_location_choose_button.setEnabled(
+            checked
+        )
+        self.settings_dialog.steam_mods_folder_location_clear_button.setEnabled(checked)
 
         # Databases tab
         if self.settings.external_community_rules_metadata_source == "None":
@@ -679,7 +714,6 @@ class SettingsController(QObject):
             self.settings_dialog.sorting_alphabetical_radio.setChecked(True)
         elif self.settings.sorting_algorithm == SortMethod.TOPOLOGICAL:
             self.settings_dialog.sorting_topological_radio.setChecked(True)
-
         # Use dependencies for sorting checkbox
         if self.settings.use_moddependencies_as_loadTheseBefore:
             (
@@ -687,10 +721,45 @@ class SettingsController(QObject):
                     True
                 )
             )
-
+        # Use alternativePackageIds as satisfying dependencies
+        if self.settings.use_alternative_package_ids_as_satisfying_dependencies:
+            self.settings_dialog.use_alternative_package_ids_as_satisfying_dependencies_checkbox.setChecked(
+                True
+            )
         # Set dependencies checkbox
         self.settings_dialog.check_deps_checkbox.setChecked(
             self.settings.check_dependencies_on_sort
+        )
+        # Prefer versioned About.xml tags over base tags
+        if self.settings.prefer_versioned_about_tags:
+            self.settings_dialog.prefer_versioned_about_tags_checkbox.setChecked(True)
+        # Download missing mods checkbox
+        self.settings_dialog.download_missing_mods_checkbox.setChecked(
+            self.settings.try_download_missing_mods
+        )
+        # Duplicate mod notification checkbox
+        self.settings_dialog.show_duplicate_mods_warning_checkbox.setChecked(
+            self.settings.duplicate_mods_warning
+        )
+        # Mod type filter checkbox
+        self.settings_dialog.mod_type_filter_checkbox.setChecked(
+            self.settings.mod_type_filter
+        )
+        # Hide invalid mod filtering checkbox
+        self.settings_dialog.hide_invalid_mods_when_filtering_checkbox.setChecked(
+            self.settings.hide_invalid_mods_when_filtering
+        )
+        # Inactive mods sorting options checkbox
+        self.settings_dialog.enable_inactive_mods_sorting_checkbox.setChecked(
+            self.settings.inactive_mods_sorting
+        )
+        # Enable/disable the inactive mods sorting group box based on the checkbox state
+        self.settings_dialog.inactive_mods_sorting_group_box.setEnabled(
+            self.settings.inactive_mods_sorting
+        )
+        # Save inactive mods sort state
+        self.settings_dialog.save_inactive_mods_sort_state_checkbox.setChecked(
+            self.settings.save_inactive_mods_sort_state
         )
 
         # Database Builder tab
@@ -753,6 +822,17 @@ class SettingsController(QObject):
         )
         self.settings_dialog.auto_delete_orphaned_dds_checkbox.setChecked(
             self.settings.auto_delete_orphaned_dds
+        )
+
+        # External Tools Tab
+        self.settings_dialog.text_editor_location.setText(
+            self.settings.text_editor_location
+        )
+        self.settings_dialog.text_editor_folder_arg.setText(
+            self.settings.text_editor_folder_arg
+        )
+        self.settings_dialog.text_editor_file_arg.setText(
+            self.settings.text_editor_file_arg
         )
 
         # Themes tab
@@ -840,17 +920,17 @@ class SettingsController(QObject):
             self.settings.debug_logging_enabled
         )
         self.settings_dialog.watchdog_checkbox.setChecked(self.settings.watchdog_toggle)
-        self.settings_dialog.mod_type_filter_checkbox.setChecked(
-            self.settings.mod_type_filter_toggle
+        self.settings_dialog.backup_saves_on_launch_checkbox.setChecked(
+            self.settings.backup_saves_on_launch
         )
-        self.settings_dialog.hide_invalid_mods_when_filtering_checkbox.setChecked(
-            self.settings.hide_invalid_mods_when_filtering_toggle
+        self.settings_dialog.auto_backup_retention_count_spinbox.setValue(
+            self.settings.auto_backup_retention_count
+        )
+        self.settings_dialog.auto_backup_compression_count_spinbox.setValue(
+            self.settings.auto_backup_compression_count
         )
         self.settings_dialog.color_background_instead_of_text_checkbox.setChecked(
             self.settings.color_background_instead_of_text_toggle
-        )
-        self.settings_dialog.show_duplicate_mods_warning_checkbox.setChecked(
-            self.settings.duplicate_mods_warning
         )
         # Clear button behavior
         self.settings_dialog.clear_moves_dlc_checkbox.setChecked(
@@ -924,6 +1004,11 @@ class SettingsController(QObject):
             self._populate_tag_colors_combobox()
         except Exception:
             pass
+
+        self.settings_dialog.enable_backup_before_update_checkbox.setChecked(
+            self.settings.enable_backup_before_update
+        )
+        self.settings_dialog.max_backups_spinbox.setValue(self.settings.max_backups)
         self.settings_dialog.enable_aux_db_behavior_editing.setChecked(
             self.settings.enable_aux_db_behavior_editing
         )
@@ -955,18 +1040,20 @@ class SettingsController(QObject):
         self.settings.instances[
             self.settings.current_instance
         ].game_folder = self.settings_dialog.game_location.text()
-
         self.settings.instances[
             self.settings.current_instance
         ].config_folder = self.settings_dialog.config_folder_location.text()
-
         self.settings.instances[
             self.settings.current_instance
         ].workshop_folder = self.settings_dialog.steam_mods_folder_location.text()
-
         self.settings.instances[
             self.settings.current_instance
         ].local_folder = self.settings_dialog.local_mods_folder_location.text()
+        self.settings.instances[
+            self.settings.current_instance
+        ].steam_client_integration = (
+            self.settings_dialog.steam_client_integration_checkbox.isChecked()
+        )
 
         # Databases tab
         if self.settings_dialog.community_rules_db_none_radio.isChecked():
@@ -1051,10 +1138,39 @@ class SettingsController(QObject):
         self.settings.use_moddependencies_as_loadTheseBefore = (
             self.settings_dialog.use_moddependencies_as_loadTheseBefore.isChecked()
         )
-
+        # Use alternativePackageIds as satisfying dependencies
+        self.settings.use_alternative_package_ids_as_satisfying_dependencies = self.settings_dialog.use_alternative_package_ids_as_satisfying_dependencies_checkbox.isChecked()
         # Set dependencies checkbox
         self.settings.check_dependencies_on_sort = (
             self.settings_dialog.check_deps_checkbox.isChecked()
+        )
+        # Prefer versioned About.xml tags over base tags
+        self.settings.prefer_versioned_about_tags = (
+            self.settings_dialog.prefer_versioned_about_tags_checkbox.isChecked()
+        )
+        # Download missing mods checkbox
+        self.settings.try_download_missing_mods = (
+            self.settings_dialog.download_missing_mods_checkbox.isChecked()
+        )
+        # Duplicate mod notification checkbox
+        self.settings.duplicate_mods_warning = (
+            self.settings_dialog.show_duplicate_mods_warning_checkbox.isChecked()
+        )
+        # Mod type filter checkbox
+        self.settings.mod_type_filter = (
+            self.settings_dialog.mod_type_filter_checkbox.isChecked()
+        )
+        # Hide invalid mod filtering checkbox
+        self.settings.hide_invalid_mods_when_filtering = (
+            self.settings_dialog.hide_invalid_mods_when_filtering_checkbox.isChecked()
+        )
+        # Inactive mods sorting options checkbox
+        self.settings.inactive_mods_sorting = (
+            self.settings_dialog.enable_inactive_mods_sorting_checkbox.isChecked()
+        )
+        # Save inactive mods sort state
+        self.settings.save_inactive_mods_sort_state = (
+            self.settings_dialog.save_inactive_mods_sort_state_checkbox.isChecked()
         )
 
         # Database Builder tab
@@ -1108,6 +1224,17 @@ class SettingsController(QObject):
         )
         self.settings.auto_delete_orphaned_dds = (
             self.settings_dialog.auto_delete_orphaned_dds_checkbox.isChecked()
+        )
+
+        # Other External Tools Tab
+        self.settings.text_editor_location = (
+            self.settings_dialog.text_editor_location.text()
+        )
+        self.settings.text_editor_folder_arg = (
+            self.settings_dialog.text_editor_folder_arg.text()
+        )
+        self.settings.text_editor_file_arg = (
+            self.settings_dialog.text_editor_file_arg.text()
         )
 
         # Themes tab
@@ -1169,17 +1296,17 @@ class SettingsController(QObject):
         self.settings.watchdog_toggle = (
             self.settings_dialog.watchdog_checkbox.isChecked()
         )
-        self.settings.mod_type_filter_toggle = (
-            self.settings_dialog.mod_type_filter_checkbox.isChecked()
+        self.settings.backup_saves_on_launch = (
+            self.settings_dialog.backup_saves_on_launch_checkbox.isChecked()
         )
-        self.settings.hide_invalid_mods_when_filtering_toggle = (
-            self.settings_dialog.hide_invalid_mods_when_filtering_checkbox.isChecked()
+        self.settings.auto_backup_retention_count = (
+            self.settings_dialog.auto_backup_retention_count_spinbox.value()
+        )
+        self.settings.auto_backup_compression_count = (
+            self.settings_dialog.auto_backup_compression_count_spinbox.value()
         )
         self.settings.color_background_instead_of_text_toggle = (
             self.settings_dialog.color_background_instead_of_text_checkbox.isChecked()
-        )
-        self.settings.duplicate_mods_warning = (
-            self.settings_dialog.show_duplicate_mods_warning_checkbox.isChecked()
         )
         # Clear button behavior
         self.settings.clear_moves_dlc = (
@@ -1425,6 +1552,11 @@ class SettingsController(QObject):
             )
         except Exception:
             pass
+
+        self.settings.enable_backup_before_update = (
+            self.settings_dialog.enable_backup_before_update_checkbox.isChecked()
+        )
+        self.settings.max_backups = self.settings_dialog.max_backups_spinbox.value()
         self.settings.enable_aux_db_behavior_editing = (
             self.settings_dialog.enable_aux_db_behavior_editing.isChecked()
         )
@@ -1464,11 +1596,59 @@ class SettingsController(QObject):
         self.settings_dialog.close()
         self._update_view_from_model()
 
+    def _validate_game_location(self, game_location: str) -> bool:
+        """
+        Validate the game location and show a warning if invalid.
+
+        :param game_location: Path to the game folder as a string.
+        :return: True if valid, False otherwise.
+        """
+        if not validate_game_executable(game_location):
+            QMessageBox.information(
+                self.settings_dialog,
+                self.tr("Invalid Game Location"),
+                self.tr(
+                    "The selected game folder does not contain a valid RimWorld executable. Please select a valid game location."
+                ),
+            )
+            return False
+        return True
+
+    def _validate_config_folder_location(self, config_folder: str) -> bool:
+        """
+        Validate the config folder location and show a warning if invalid.
+
+        :param config_folder: Path to the config folder as a string.
+        :return: True if valid, False otherwise.
+        """
+        if not (Path(config_folder) / "ModsConfig.xml").exists():
+            QMessageBox.warning(
+                self.settings_dialog,
+                self.tr("Invalid Config Folder"),
+                self.tr(
+                    "The selected config folder does not contain ModsConfig.xml. Please select a valid config folder."
+                ),
+            )
+            return False
+        return True
+
     @Slot()
     def _on_global_ok_button_clicked(self) -> None:
         """
         Close the settings dialog, update the model from the view, and save the settings.
         """
+        # Validate game folder if set
+        game_folder_text = self.settings_dialog.game_location.text().strip()
+        if game_folder_text and not self._validate_game_location(game_folder_text):
+            return
+
+        # Validate config folder if set
+        config_folder_text = self.settings_dialog.config_folder_location.text().strip()
+        if config_folder_text and not self._validate_config_folder_location(
+            config_folder_text
+        ):
+            return
+
         self.settings_dialog.close()
         self._update_model_from_view()
         self.settings.save()
@@ -1510,7 +1690,13 @@ class SettingsController(QObject):
             game_location = self._on_game_location_choose_button_clicked_non_macos()
         if game_location is None:
             return
+        # Validate the selected game location immediately
+        if not self._validate_game_location(str(game_location)):
+            return
         self.settings_dialog.game_location.setText(str(game_location))
+        self.settings_dialog.local_mods_folder_location.setText(
+            str(game_location / "Mods")
+        )
         self._last_file_dialog_path = str(game_location)
 
     def _on_game_location_choose_button_clicked_macos(self) -> Path | None:
@@ -1567,6 +1753,9 @@ class SettingsController(QObject):
             _dir=str(self._last_file_dialog_path),
         )
         if not config_folder_location:
+            return
+
+        if not self._validate_config_folder_location(config_folder_location):
             return
 
         self.settings_dialog.config_folder_location.setText(config_folder_location)
@@ -1772,7 +1961,6 @@ class SettingsController(QObject):
         """
         if sys.platform == "win32":
             user_home = Path.home()
-            steam_folder = "C:/Program Files (x86)/Steam"
             from app.utils.win_find_steam import find_steam_folder
 
             steam_folder, found = find_steam_folder()
@@ -1783,13 +1971,27 @@ class SettingsController(QObject):
                 )
                 steam_folder = "C:/Program Files (x86)/Steam"
 
-            game_folder = Path(f"{steam_folder}/steamapps/common/Rimworld")
+            game_folder: str | Path = find_steam_rimworld(steam_folder)
+
+            # Fallback game folder
+            if game_folder == "":
+                game_folder = f"{steam_folder}/steamapps/common/RimWorld"
+            game_folder = Path(game_folder)
+
             config_folder = Path(
                 f"{user_home}/AppData/LocalLow/Ludeon Studios/RimWorld by Ludeon Studios/Config"
             )
-            steam_mods_folder = Path(
-                f"{steam_folder}/steamapps/workshop/content/294100"
+
+            steam_mods_folder = get_path_up_to_string(
+                game_folder, "common", exclude=True
             )
+            if steam_mods_folder == "":
+                # Fallback steam mods path
+                steam_mods_folder = Path(
+                    f"{steam_folder}/steamapps/workshop/content/294100"
+                )
+            else:
+                steam_mods_folder = Path(steam_mods_folder) / "workshop/content/294100"
 
             return game_folder, config_folder, steam_mods_folder
         else:
@@ -2132,6 +2334,22 @@ class SettingsController(QObject):
         EventBus().do_install_steamcmd.emit()
 
     @Slot()
+    def _on_text_editor_location_choose_button_clicked(self) -> None:
+        """
+        Open a file dialog to select the Steamcmd install location and handle the result.
+        """
+        text_editor_location = show_dialogue_file(
+            mode="open",
+            caption="Select Text Editor Command",
+            _dir=str(self._last_file_dialog_path),
+        )
+        if not text_editor_location:
+            return
+
+        self.settings_dialog.text_editor_location.setText(text_editor_location)
+        self._last_file_dialog_path = str(Path(text_editor_location).parent)
+
+    @Slot()
     def _on_db_builder_download_all_mods_via_steamcmd_button_clicked(self) -> None:
         """
         Build the Steam Workshop database of all mods using steamcmd.
@@ -2255,9 +2473,8 @@ class SettingsController(QObject):
         """
         Enable/disable the auxiliary metadata database performance mode based on the checkbox state.
         """
-        instance_path = Path(self.settings.current_instance_path)
         aux_metadata_controller = AuxMetadataController.get_or_create_cached_instance(
-            instance_path / "aux_metadata.db"
+            self.settings.aux_db_path
         )
         with aux_metadata_controller.Session() as session:
             if self.settings_dialog.aux_db_performance_mode.isChecked():
